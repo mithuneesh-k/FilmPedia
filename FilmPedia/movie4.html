@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>A Minecraft Movie</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div class="MainMvContainer" >
+            <div class="MovieContainer">
+                    <img class="movieImg" src="photos/minecraft.png" alt="minecraft">
+                <div class="movieDetails">
+                    <a href="movie4.html" class="movieName">A Minecraft Movie</a>
+                    <p class="movieGenre">Adventure • Fantasy • Action</p>
+                    <p class="movieRating">IMDB: 6.7</p>
+                </div>
+            </div>
+            <p class="movieDesc">A group of misfits must use creativity and teamwork to survive in a blocky world and defeat the Ender Dragon.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#">Home</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/wJO_vIDZn-I?si=WsWQhy8-dSYgFZfk" target="_blank" style="color: #2980b9; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Minecraft Movie Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column; list-style-type: none;">
+                <li><strong>Jack Black</strong> as Steve</li>
+                <li><strong>Danielle Brooks</strong> as Alex</li>
+                <li><strong>Matt Berry</strong> as Wizard</li>
+                <li><strong>Henry Cavill</strong> as Hunter</li>
+                <li><em>Directed by Jemaine Clement</em></li>
+                <li><em>Produced by Roy Lee, Jon Berg</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Four misfits are transported to the Minecraft world, a blocky realm where they must learn to survive and thrive. Using the power of creativity and teamwork, they embark on an epic quest to find their way home while battling hostile mobs and uncovering the secrets of this digital universe. Along the way, they discover the importance of friendship and imagination.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li><strong>IMDb:</strong> Rated 6.7/10, praised for its humor and visual creativity.</li>
+                <li><strong>Rotten Tomatoes:</strong> Mixed reviews from critics but strong audience approval.</li>
+                <li><strong>Audience Response:</strong> Well-received by Minecraft fans for staying true to the game's spirit.</li>
+                <li><strong>Visual Style:</strong> Unique blend of live-action and blocky Minecraft aesthetics.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li><strong>Release Date:</strong> April 4, 2025</li>
+                <li><strong>Runtime:</strong> 104 minutes</li>
+                <li><strong>Budget:</strong> $150 million</li>
+                <li>Perfect for fans of the Minecraft game and family audiences alike.</li>
+                <li>Great for viewers who enjoy adventure and fantasy films.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li>The film adapts the world-building mechanics from the massively popular Minecraft game.</li>
+                <li>Jack Black's character is the iconic "Steve" from the game.</li>
+                <li>Many scenes were shot using Minecraft assets and custom visual effects.</li>
+                <li>The movie bridges the gap between digital gaming culture and mainstream cinema.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if(href.startsWith('#') && href.length > 1) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

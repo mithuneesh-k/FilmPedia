@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Spider-Man: No Way Home (2021)</title>
+    <link rel="stylesheet" href="movieStyle.css">
+    
+</head>
+<body> 
+        <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+    <div id="moviePoint" class="MainMvContainer" style=" width: auto; border-radius: 10px;">
+        <div class="MovieContainer">
+            <img class="movieImg" src="photos/spiderman.png" alt="Spider-Man No Way Home">
+            <div class="movieDetails">
+                <a href="movie2.html" class="movieName" style="font-size: 40px;">Spider-Man: No Way Home (2021)</a>
+                <p class="movieGenre" style="font-size: 20px;">Action • Adventure • Superhero</p>
+                <p class="movieRating">IMDB: 8.2</p>
+            </div>
+        </div>
+        <p class="movieDesc">Peter Parker's identity is revealed. Seeking help from Doctor Strange, he inadvertently opens the multiverse, bringing villains from other worlds into his own.</p>
+    </div>
+
+    <nav>
+            <ul  style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+    </nav>
+
+    <div class="section">
+        <h2>Trailer - Click ↓</h2>
+        <a href="https://www.youtube.com/watch?v=JfVOs4VSpmA" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Spider-Man: No Way Home Trailer</a>
+    </div>
+    <div id="castCrew" class="section">
+        <h2>Cast & Crew</h2>
+        <ul class="castList" style="flex-direction: column;">
+            <li><strong>Tom Holland</strong> as Peter Parker / Spider-Man</li>
+            <li><strong>Zendaya</strong> as MJ</li>
+            <li><strong>Benedict Cumberbatch</strong> as Doctor Strange</li>
+            <li><strong>Jacob Batalon</strong> as Ned Leeds</li>
+            <li><strong>Alfred Molina</strong> as Doc Ock</li>
+            <li><strong>Jamie Foxx</strong> as Electro</li>
+            <li><strong>Willem Dafoe</strong> as Green Goblin</li>
+            <li><strong>Tobey Maguire</strong> as Peter Parker (Original Spider-Man)</li>
+            <li><strong>Andrew Garfield</strong> as Peter Parker (The Amazing Spider-Man)</li>
+            <li><em>Directed by Jon Watts</em></li>
+            <li><em>Produced by Amy Pascal & Kevin Feige</em></li>
+        </ul>
+    </div>
+
+    <div id="story" class="section">
+        <h2>Story</h2>
+        <p>With his identity now revealed as Spider-Man, Peter Parker seeks Doctor Strange's help to make the world forget. However, the spell goes wrong, tearing open the multiverse and bringing dangerous villains from alternate dimensions. Peter must find a way to save both his world and the villains themselves, learning that with great power comes great responsibility.</p>
+    </div>
+
+    <div id="reviews" class="section">
+        <h2>Reviews</h2>
+        <ul style="flex-direction: column;">
+            <li><strong>IMDb:</strong> With an 8.2/10 rating and over 1 million votes, it's one of the highest-rated MCU films.</li>
+            <li><strong>Rotten Tomatoes:</strong> Critics gave it 90% while audiences rated it 98%, showing widespread acclaim.</li>
+            <li><strong>Metacritic:</strong> A score of 71 reflects strong critical appreciation for the film's storytelling.</li>
+            <li><strong>Letterboxd:</strong> Fans loved it with a 4.1/5 average rating across hundreds of thousands of reviews.</li>
+            <li><strong>Box Office Success:</strong> The film became a global phenomenon, breaking records worldwide.</li>
+        </ul>
+    </div>
+
+    <div id="watchersGuide" class="section">
+        <h2>Watcher's Guide</h2>
+        <ul style="flex-direction: column;">
+            <li><strong>Release Date:</strong> December 17, 2021 (US)</li>
+            <li><strong>Runtime:</strong> 159 minutes</li>
+            <li><strong>Budget:</strong> $200 million</li>
+            <li><strong>Box Office:</strong> $1.9 billion worldwide</li>
+            <li>Best enjoyed on the biggest screen available for maximum impact.</li>
+            <li>A must-watch for MCU fans and essential to understanding the multiverse saga.</li>
+        </ul>
+    </div>
+
+    <div id="funFacts" class="section">
+        <h2>Fun Facts</h2>
+        <ul style="flex-direction: column;">
+            <li>The film brought back characters from previous Spider-Man franchises.</li>
+            <li>Became one of the highest-grossing films of all time.</li>
+            <li>Directed by Jon Watts, who helmed the previous two Tom Holland Spider-Man films.</li>
+            <li>Features a groundbreaking multiverse concept that expanded the MCU.</li>
+            <li>The film was a cultural phenomenon with record-breaking box office numbers.</li>
+        </ul>
+    </div>
+
+    <script>
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+    <div class="Footer">
+        <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+        <p class="FooterText">Mithuneesh. K</p>
+        <p>@FilmPedia</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Maaveeran (2023)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/maaveeran.png" alt="Maaveeran Movie">
+                <div class="movieDetails">
+                    <a href="movie12.html" class="movieName" style="font-size: 40px;">Maaveeran (2023)</a>
+                    <p class="movieGenre" style="font-size: 20px;">Superhero • Action • Fantasy</p>
+                    <p class="movieRating">IMDB: 7.4</p>
+                </div>
+            </div>
+            <p class="movieDesc">Sathya, a timid comic book artist who avoids confrontation at all costs, suddenly begins hearing a mysterious voice that narrates his life as a heroic story. Forced by this 'inner voice', he must stand up against a corrupt politician to save his community.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/EcNACt-LOi0?si=AdP1luZo-5nyo5u-" target="_blank" style="color: #5d3fd3; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Maaveeran Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Sivakarthikeyan</strong> as Sathya</li>
+                <li><strong>Vijay Sethupathi</strong> as the Voice of Maaveeran (Voice-only)</li>
+                <li><strong>Aditi Shankar</strong> as Nila</li>
+                <li><strong>Mysskin</strong> as Minister Jeyakodi</li>
+                <li><strong>Yogi Babu</strong> as Kumar</li>
+                <li><strong>Saritha</strong> as Easwari (Sathya's Mother)</li>
+                <li><strong>Sunil</strong> as Paramu</li>
+                <li><em>Directed & Written by Madonne Ashwin</em></li>
+                <li><em>Music by Bharath Sankar</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Sathya is a struggling cartoonist living in a slum who believes in 'adjusting' to injustice rather than fighting it. When his family is relocated to a poorly constructed government apartment, his life takes a surreal turn after a near-death experience. He begins hearing a god-like voice that dictates his every move like a panel in a comic book. Guided by this voice, the cowardly Sathya is transformed into a reluctant savior of the people, eventually facing off against the ruthless Minister Jeyakodi.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>The Hindu:</strong> Praised as a "fascinating superhero film" that respects commercial sensibilities while offering sharp social commentary.</li>
+                <li><strong>IMDb:</strong> Holds a solid 7.4/10, with audiences celebrating the unique concept and Sivakarthikeyan's transition from coward to hero.</li>
+                <li><strong>Technical:</strong> The "voice" gimmick (provided by Vijay Sethupathi) was hailed as a brilliant narrative tool that added both humor and tension.</li>
+                <li><strong>Action:</strong> The fight sequences were noted for their creative choreography, where the hero moves as if being 'pulled' by invisible strings.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> July 14, 2023</li>
+                <li><strong>Runtime:</strong> 163 minutes</li>
+                <li><strong>Genre Mix:</strong> It's a rare blend of political satire and fantasy-superhero elements.</li>
+                <li><strong>Telugu Version:</strong> The film was released in Telugu under the title <em>Mahaveerudu</em>, with actor Ravi Teja providing the voiceover.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>The film's title is a tribute to the 1986 classic <em>Maaveeran</em> starring Rajinikanth.</li>
+                <li>Vijay Sethupathi recorded his voiceover for the entire film in just a few days, but his presence is felt throughout the runtime.</li>
+                <li>Director Madonne Ashwin previously won two National Awards for his debut film, <em>Mandela</em>.</li>
+                <li>The comic book panels seen in the film were specially designed to mirror the actual cinematography of the action scenes.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+
+    </body>
+</html>

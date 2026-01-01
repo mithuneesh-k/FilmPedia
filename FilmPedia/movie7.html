@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Spider-Man: Across the Spider-Verse</title>
+        <link rel="stylesheet" href="movieStyle.css">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/spiderverse.png" alt="Across the Spider-Verse">
+                <div class="movieDetails">
+                    <a href="movie7.html" class="movieName" style="font-size: 40px;">Spider-Man: Across the Spider-Verse</a>
+                    <p class="movieGenre" style="font-size: 20px;">Animation • Sci-Fi • Action</p>
+                    <p class="movieRating">IMDB: 8.6</p>
+                </div>
+            </div>
+            <p class="movieDesc">Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/shW9i6k8cB0?si=wQRz3Dr4atqKgVkv" target="_blank" style="color: #ff0055; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Spider-Verse Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Shameik Moore</strong> as Miles Morales / Spider-Man</li>
+                <li><strong>Hailee Steinfeld</strong> as Gwen Stacy / Spider-Woman</li>
+                <li><strong>Oscar Isaac</strong> as Miguel O'Hara / Spider-Man 2099</li>
+                <li><strong>Jake Johnson</strong> as Peter B. Parker</li>
+                <li><strong>Jason Schwartzman</strong> as The Spot</li>
+                <li><strong>Daniel Kaluuya</strong> as Hobie Brown / Spider-Punk</li>
+                <li><strong>Karan Soni</strong> as Pavitr Prabhakar / Spider-Man India</li>
+                <li><em>Directed by Joaquim Dos Santos, Kemp Powers, and Justin K. Thompson</em></li>
+                <li><em>Produced by Phil Lord & Christopher Miller</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>One year after the events of the first film, Miles Morales is unexpectedly reunited with Gwen Stacy. He is brought into the "Spider-Society," a headquarters for every variation of Spider-Man across the multiverse led by Miguel O'Hara. However, Miles finds himself at odds with the Society's "Canon Event" philosophy. As he tries to save those he loves from the reality-warping villain The Spot, he becomes a fugitive from thousands of other Spider-People in a race against fate.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> A rare 4.5/5. It spent significant time as the #1 highest-rated film of all time on the platform upon release.</li>
+                <li><strong>IMDb:</strong> Holds a powerful 8.6/10 with over 400k votes.</li>
+                <li><strong>Rotten Tomatoes:</strong> 95% Certified Fresh, with critics calling it a "visual masterclass" and "better than the original."</li>
+                <li><strong>Aesthetic:</strong> Widely praised for having six distinct art styles, one for each universe visited.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> June 2, 2023</li>
+                <li><strong>Runtime:</strong> 140 minutes (The longest US animated film from a major studio).</li>
+                <li><strong>Cliffhanger:</strong> Be prepared—the movie ends on a major cliffhanger leading into <em>Beyond the Spider-Verse</em>.</li>
+                <li><strong>Easter Eggs:</strong> Every frame is packed with comic book references; multiple viewings are highly recommended.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>There are over 250 unique Spider-People featured in the "Spider-Society" chase sequence.</li>
+                <li>The Lego Universe sequence was actually animated by a 14-year-old fan who was hired after his YouTube recreations went viral.</li>
+                <li>Spider-Punk's animation style changes his frame rate and textures constantly to mimic a punk-rock collage.</li>
+                <li>Pavitr Prabhakar's world (Mumbattan) was designed to look like 1970s Indian comic books.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+
+    </body>
+</html>

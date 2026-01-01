@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Superman (2025)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/superman.png" alt="superman">
+                <div class="movieDetails">
+                    <a href="movie1.html" class="movieName" style="font-size: 40px;">Superman (2025)</a>
+                    <p class="movieGenre" style="font-size: 20px;">Superhero • Fantasy</p>
+                    <p class="movieRating">IMDB: 7.1</p>
+                </div>
+            </div>
+            <p class="movieDesc">An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest superhero.</p>
+        </div>
+
+        <nav>
+            <ul  style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/uhUht6vAsMY?si=bWyPhJU60dYmXdT_" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Superman (2025) Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>David Corenswet</strong> as Clark Kent / Superman</li>
+                <li><strong>Rachel Brosnahan</strong> as Lois Lane</li>
+                <li><strong>Nicholas Hoult</strong> as Lex Luthor</li>
+                <li><strong>Isabela Merced</strong> as Hawkgirl</li>
+                <li><strong>Nathan Fillion</strong> as Guy Gardner / Green Lantern</li>
+                <li><strong>Edi Gathegi</strong> as Mister Terrific</li>
+                <li><strong>Anthony Carrigan</strong> as Metamorpho</li>
+                <li><strong>Skyler Gisondo</strong> as Jimmy Olsen</li>
+                <li><strong>Jena Malone</strong> as Martha Kent</li>
+                <li><em>Directed & Written by James Gunn</em></li>
+                <li><em>Produced by Peter Safran & James Gunn</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Superman (2025) is a reboot of the Superman film series and the first entry in James Gunn’s new DC Universe. The film follows Clark Kent as he struggles to balance his Kryptonian heritage with his human upbringing. He must prove himself as Earth’s protector while facing Lex Luthor’s schemes and navigating his relationship with Lois Lane. The story emphasizes hope, humanity, and Superman’s role as a symbol of inspiration.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Fans are enthusiastic, with nearly 263K ★★★ ratings and a strong average of 3.9/5. It’s one of the most discussed films of 2025 on the platform.</li>
+                <li><strong>IMDb:</strong> With a 7.1/10 rating and over 360K votes, it’s both critically and popularly embraced. IMDb even ranked it the most popular movie of 2025.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics and audiences align with an 86–87% score, putting it in the top tier of DC superhero films.</li>
+                <li><strong>Metacritic:</strong> While critics are a bit more reserved at 68, the user score matches IMDb at 7.1, showing consistent audience approval.</li>
+                <li><strong>X (Twitter):</strong> Social media buzz is highly positive, with fans calling it “near-perfect” and praising Corenswet’s Superman portrayal.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> July 11, 2025 (US)</li>
+                <li><strong>Runtime:</strong> 129 minutes</li>
+                <li><strong>Budget:</strong> $225 million</li>
+                <li><strong>Box Office:</strong> $616.7 million worldwide</li>
+                <li>Best enjoyed on IMAX screens for full visual impact.</li>
+                <li>Serves as the launchpad for the new DCU, making it essential viewing for fans.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Directed by James Gunn, known for Guardians of the Galaxy.</li>
+                <li>Marks the first official film in the DCU reboot.</li>
+                <li>Costume design pays homage to classic Superman suits while modernizing details.</li>
+                <li>Henry Cavill gave his blessing to the new Superman.</li>
+                <li>Filmed with IMAX cameras for enhanced cinematic experience.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

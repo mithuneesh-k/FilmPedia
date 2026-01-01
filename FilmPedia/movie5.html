@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Demon Slayer: Infinity Castle (2025)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/demonslayer.png" alt="Demon Slayer Infinity Castle">
+                <div class="movieDetails">
+                    <a href="movie5.html" class="movieName" style="font-size: 40px;">Demon Slayer: Infinity Castle (2025)</a>
+                    <p class="movieGenre" style="font-size: 20px;">Anime • Action • Dark Fantasy</p>
+                    <p class="movieRating">IMDB: 9.2</p>
+                </div>
+            </div>
+            <p class="movieDesc">The Demon Slayer Corps plunges into the shifting, gravity-defying Infinity Castle to face the remaining Upper Rank demons in a final, desperate battle against Muzan Kibutsuji.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/x7uLutVRBfI?si=5on9bygV8QqSyNKH" target="_blank" style="color: #e63946; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Infinity Castle Arc Movie Trilogy Teaser</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Natsuki Hanae</strong> as Tanjiro Kamado</li>
+                <li><strong>Akari Kito</strong> as Nezuko Kamado</li>
+                <li><strong>Hiro Shimono</strong> as Zenitsu Agatsuma</li>
+                <li><strong>Yoshitsugu Matsuoka</strong> as Inosuke Hashibira</li>
+                <li><strong>Toshiyiko Seki</strong> as Muzan Kibutsuji</li>
+                <li><strong>Mamoru Miyano</strong> as Doma (Upper Moon Two)</li>
+                <li><strong>Ryotaro Okiayu</strong> as Kokushibo (Upper Moon One)</li>
+                <li><strong>Saori Hayami</strong> as Shinobu Kocho</li>
+                <li><em>Directed by Haruo Sotozaki</em></li>
+                <li><em>Produced by Ufotable (Aniplex & Shueisha)</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Following the Hashira Training, the Demon Slayers find themselves suddenly pulled into Muzan Kibutsuji’s infinite, ever-changing lair. This first film of the trilogy captures the intense, high-stakes battles between the Hashira and the strongest Upper Rank demons. It focuses on the themes of vengeance, sacrifice, and the unbreakable bond of the Demon Slayer Corps as they fight to end the era of demons once and for all.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Fans have rated it an incredible 4.6/5, citing it as the peak of modern animation quality.</li>
+                <li><strong>IMDb:</strong> Debuted with a 9.2/10, making it one of the highest-rated anime films of all time.</li>
+                <li><strong>Rotten Tomatoes:</strong> Currently holding a 98% Fresh rating from critics and a 99% Audience Score.</li>
+                <li><strong>Animation Quality:</strong> Critics are calling the 3D environmental work of the "Infinity Castle" a milestone in digital cinema.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> July 18, 2025 (Global Release)</li>
+                <li><strong>Runtime:</strong> 135 minutes</li>
+                <li><strong>Format:</strong> Strictly recommended for IMAX to appreciate the "Infinite" scale of the castle.</li>
+                <li><strong>Trilogy Info:</strong> This is Movie 1 of 3. Ensure you have watched the <em>Hashira Training Arc</em> before viewing.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Ufotable reportedly spent over 4 years in pre-production for the castle’s layout.</li>
+                <li>This is the first time a major Shonen manga finale is being adapted as a theatrical trilogy.</li>
+                <li>The soundtrack features a 100-piece orchestra to heighten the cinematic tension.</li>
+                <li>The film broke opening weekend records in Japan, surpassing <em>Mugen Train's</em> initial numbers.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

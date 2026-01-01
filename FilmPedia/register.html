@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Movie Central</title>
+    <link rel="stylesheet" href="testing.css">
+</head>
+<body>
+
+    <header class="Header">
+        <h1 class="Title">JOIN THE CLUB</h1>
+        <p class="Desc">Create an account to start reviewing movies</p>
+    </header>
+
+    <div class="LoginWrapper">
+        <div class="LoginCard RegisterCard">
+            <h2 class="LoginTitle">Create Account</h2>
+            <form action="#">
+                <div class="InputGroup">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" class="LoginInput" placeholder="John Doe" required>
+                </div>
+
+                <div class="InputGroup">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="LoginInput" placeholder="example@mail.com" required>
+                </div>
+                
+                <div class="InputGroup">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="LoginInput" placeholder="Create a password" required>
+                </div>
+
+                <div class="InputGroup">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="LoginInput" placeholder="Repeat your password" required>
+                </div>
+
+                <div class="CheckboxGroup">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a></label>
+                </div>
+
+                <button type="submit" class="LoginButton">Create Account</button>
+            </form>
+            <div class="LoginFooter">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="Footer">
+        <p class="FooterText">&copy; 2025 Movie Central. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

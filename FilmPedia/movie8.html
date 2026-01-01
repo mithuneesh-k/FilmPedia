@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Mufasa: The Lion King (2024)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/mufasa.png" alt="Mufasa: The Lion King">
+                <div class="movieDetails">
+                    <a href="movie8.html" class="movieName" style="font-size: 40px;">Mufasa: The Lion King (2024)</a>
+                    <p class="movieGenre" style="font-size: 20px;">Adventure • Musical • Drama</p>
+                    <p class="movieRating">IMDB: 6.9</p>
+                </div>
+            </div>
+            <p class="movieDesc">Rafiki tells the story of Mufasa to young lion cub Kiara—Simba and Nala’s daughter—revealing how an orphaned cub once lost and alone became the legendary King of the Pride Lands alongside his brother, Taka.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/o17MF9vnabg?si=V8pb7N6HcuPXQria" target="_blank" style="color: #ffcc33; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Mufasa: The Lion King Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Aaron Pierre</strong> as Mufasa</li>
+                <li><strong>Kelvin Harrison Jr.</strong> as Taka (Scar)</li>
+                <li><strong>Seth Rogen</strong> as Pumbaa</li>
+                <li><strong>Billy Eichner</strong> as Timon</li>
+                <li><strong>John Kani</strong> as Rafiki</li>
+                <li><strong>Blue Ivy Carter</strong> as Kiara</li>
+                <li><strong>Beyoncé Knowles-Carter</strong> as Nala</li>
+                <li><strong>Donald Glover</strong> as Simba</li>
+                <li><em>Directed by Barry Jenkins</em></li>
+                <li><em>Original Songs by Lin-Manuel Miranda</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Exploring the origins of the Pride Lands' most iconic ruler, the film is told through flashbacks as Rafiki recounts the tale to Simba's daughter. It reveals that Mufasa was actually an orphaned "stray" cub who was adopted into a royal bloodline by a young prince named Taka. The two grow up as inseparable brothers until a series of trials, dangerous encounters with a white lion named Kiros, and the weight of destiny begin to pull them toward different paths.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Rotten Tomatoes:</strong> Critics were divided at 60%, but the **Audience Score hit 88%**, showing fans loved the emotional backstory.</li>
+                <li><strong>IMDb:</strong> Maintains a 6.9/10, praised for its improved character expressions compared to the 2019 film.</li>
+                <li><strong>Visuals:</strong> Widely regarded as a technical marvel, with breathtaking recreations of African landscapes and snow-covered mountains.</li>
+                <li><strong>Music:</strong> Lin-Manuel Miranda’s new songs bring a fresh "Broadway" energy to the savanna.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> December 20, 2024</li>
+                <li><strong>Runtime:</strong> 118 minutes</li>
+                <li><strong>Vibe:</strong> More emotional and "mythic" than the 2019 remake; focuses heavily on the theme of chosen family.</li>
+                <li><strong>Viewing Tip:</strong> Watch the 2019 *Lion King* first to fully appreciate the tragedy of how Mufasa and Scar's relationship changed.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>The film marks the professional acting debut of **Blue Ivy Carter**, playing the daughter of her real-life mother's character, Nala.</li>
+                <li>Directed by Barry Jenkins, the Oscar-winning director of *Moonlight*, bringing a more artistic "human" feel to the animals.</li>
+                <li>Unlike the 2019 film, the animators allowed the lions to have more **discernible facial expressions** (smiles, knits in brows) to help convey emotion.</li>
+                <li>The film reveals that Mufasa and Scar were not biological brothers, a detail that was hinted at in the original 1994 production.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+
+    </body>
+</html>

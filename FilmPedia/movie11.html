@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Kalki 2898 AD (2024)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/kalki.png" alt="Kalki 2898 AD">
+                <div class="movieDetails">
+                    <a href="movie11.html" class="movieName" style="font-size: 40px;">Kalki 2898 AD (2024)</a>
+                    <p class="movieGenre" style="font-size: 20px;">Sci-Fi • Mythology • Action</p>
+                    <p class="movieRating">IMDB: 7.6</p>
+                </div>
+            </div>
+            <p class="movieDesc">In a post-apocalyptic world ruled by a totalitarian god-king, an ancient prophecy regarding the final avatar of Vishnu begins to unfold. A bounty hunter, an immortal warrior, and a pregnant refugee must unite to protect the hope of humanity.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/-boPEbe6iaI?si=_naUYrqR7JZs37xC" target="_blank" style="color: #61dafb; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Kalki 2898 AD Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Prabhas</strong> as Bhairava / Karna</li>
+                <li><strong>Amitabh Bachchan</strong> as Ashwatthama</li>
+                <li><strong>Kamal Haasan</strong> as Supreme Yaskin</li>
+                <li><strong>Deepika Padukone</strong> as Sumathi (SUM-80)</li>
+                <li><strong>Keerthy Suresh</strong> as Bujji (Voice)</li>
+                <li><strong>Disha Patani</strong> as Roxie</li>
+                <li><em>Directed by Nag Ashwin</em></li>
+                <li><em>Music by Santhosh Narayanan</em></li>
+                <li><em>Produced by Vyjayanthi Movies</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Spanning 6,000 years, the story begins at the end of the Kurukshetra War and leaps into the dystopian year 2898 AD. In the last city of Kashi, the elite live in the floating "Complex" while the poor suffer below. When Sumathi, a lab subject, escapes with a divine child in her womb, she is protected by the immortal Ashwatthama. Bhairava, a selfish bounty hunter, is caught in the crossfire, leading to a clash of mythic proportions that bridges the gap between the Mahabharata and the future.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Visual Mastery:</strong> Praised for its "Indofuturist" design, blending Indian temple architecture with cyberpunk technology.</li>
+                <li><strong>Amitabh's Performance:</strong> Critics and fans unanimously called Amitabh Bachchan's portrayal of Ashwatthama the "soul of the film."</li>
+                <li><strong>IMDb:</strong> Currently holds a strong 7.6/10, ranking as one of the most popular Indian films of 2024.</li>
+                <li><strong>The Climax:</strong> The final 20 minutes are widely considered a landmark in Indian cinema for their epic scale and reveals.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Runtime:</strong> 181 minutes (3 hours 1 min).</li>
+                <li><strong>Cinematic Universe:</strong> This is Part 1 of the Kalki Cinematic Universe (KCU).</li>
+                <li><strong>Best Format:</strong> Recommended in IMAX 3D for the full scale of the "Complex" and battle sequences.</li>
+                <li><strong>Language:</strong> Originally shot in Telugu and Hindi; available in multiple languages.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>It is the most expensive Indian film ever made, with a budget of ₹600 crore.</li>
+                <li>The custom-built supercar "Bujji" is a real, functioning 6-ton vehicle designed and manufactured specifically for the film.</li>
+                <li>The film features major cameos from stars like Dulquer Salmaan, Vijay Deverakonda, and Mrunal Thakur.</li>
+                <li>Director Nag Ashwin took 5 years to complete the world-building and pre-production for this project.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+
+    </body>
+</html>
