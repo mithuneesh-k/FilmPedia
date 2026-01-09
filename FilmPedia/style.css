@@ -239,7 +239,7 @@ li:hover {
 }
 
 .LoginCard {
-    background-color: rgb(178, 211, 255); /* Matches your MainMvContainer */
+    background-color: rgb(178, 211, 255); 
     padding: 40px;
     border-radius: 10px;
     width: 100%;
@@ -272,7 +272,7 @@ li:hover {
     padding: 12px;
     border: 2px solid white;
     border-radius: 8px;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+    box-sizing: border-box; 
     font-family: Arial, sans-serif;
 }
 
@@ -318,7 +318,7 @@ li:hover {
 }
 
 .RegisterCard {
-    max-width: 450px; /* Slightly wider for the extra fields */
+    max-width: 450px; 
 }
 
 .CheckboxGroup {
@@ -346,4 +346,47 @@ li:hover {
 .RegisterCard:hover {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     transition: box-shadow 0.3s ease;
+}
+
+.Header {
+    background-color: dodgerblue;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HeaderContent {
+    flex-grow: 1;
+}
+
+
+.loginIcon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: dodgerblue; 
+    padding: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.loginIcon:hover {
+    transform: scale(1.1);
+
+}
+
+@media (max-width: 600px) {
+    .Header {
+        padding: 20px 10px;
+    }
+    .loginIcon {
+        width: 35px;
+        height: 35px;
+    }
 }
