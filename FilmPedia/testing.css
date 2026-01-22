@@ -1,47 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    background: white;
+    background: dodgerblue;
     color: #222;
 }
 
 .Header {
-    background-color: dodgerblue ;
+    background-color: dodgerblue;
     color: white;
     padding: 40px 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.HeaderContent {
+    flex-grow: 1;
+}
+
 .Title {
-    color: white
-    font-size: 50px;
+    color: white;
+    font-size: clamp(1.8rem, 6vw, 3rem);
     margin: 0;
     letter-spacing: 4px;
+    white-space: nowrap; 
 }
+
+
 .Desc {
     margin: 0.5rem 0;
     color: #ffffff;
+    font-size: 1.5rem;
 }
-
 
 .Main {
     display: flex;
     flex-wrap: nowrap;
     gap: 1rem;
     overflow-x: auto;
-    /* scroll-snap-type: x mandatory; */
     padding: 20px;
     padding-top: 0;
     background: dodgerblue;
     margin: 0 10px 10px 10px;
     border-radius: 0 0 10px 10px;
-}
-/* .Main::-webkit-scrollbar {
-    display: none;
-} */
-.Main {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.Main::-webkit-scrollbar {
+    display: none;
 }
 
 .MainMvContainer {
@@ -53,13 +67,9 @@ body {
 }
 
 .MovieContainer {
-    grid-row: 1;
     flex: 0 0 auto;
-    /* width: 300px; */
-    scroll-snap-align: start;
     display: grid;
     grid-template-columns: 120px 1fr;
-    grid-template-rows: auto auto 1fr;
     gap: 0.5rem 1rem;
     background: #ffffff;
     border-radius: 8px;
@@ -73,10 +83,12 @@ body {
 }
 
 .movieImg {
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
     grid-column: 1;
     width: 100%;
+    height: auto;
     border-radius: 6px;
+    display: block;
 }
 
 .movieImg:hover {
@@ -86,44 +98,46 @@ body {
 
 .movieDetails {
     grid-column: 2;
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 }
 
 .movieName {
     color: dodgerblue;
-    grid-row: 1;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
     margin: 0;
     text-decoration: none;
 }
+
 .movieName:hover {
     text-decoration: underline;
 }
 
 .movieGenre {
-    grid-row: 2;
     font-style: italic;
     color: #0066cc;
+    font-size: 1.2rem;
     margin: 0;
 }
 
 .movieRating {
-    grid-row: 3;  
     color: rgb(255, 174, 0);
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    
+    font-size: 1.1rem;
 }
 
 .movieDesc {
-    grid-row:2;
-    margin: 10px;
+    grid-column: 2;
+    margin-top: 1rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: bold;
+    color: #444;
 }
-
 
 .Footer {
     text-align: center;
@@ -132,14 +146,9 @@ body {
     color: #f5f5f5;
     border-radius: 0 0 10px 10px;
 }
+
 .FooterText {
     margin: 0.2rem 0;
-}
-
-.socmedLogo {
-    width: 24px;
-    height: 24px;
-    margin-top: 0.5rem;
 }
 
 .scrollHead {
@@ -148,7 +157,6 @@ body {
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
-    padding-bottom: ;
     background: dodgerblue;
     border-radius: 10px 10px 0 0;
     margin: 10px 10px 0 10px;
@@ -158,77 +166,78 @@ nav {
     background-color: dodgerblue;
     padding: 10px;
     font-family: 'Segoe UI';
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     border-radius: 10px;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+nav ul {
+    list-style: none;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: dodgerblue;
+    padding: 10px;
     gap: 20px;
-    font-family: 'Segoe UI';
-
 }
-li a {
+
+nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+nav ul li {
+    flex: 0 0 auto;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    cursor: pointer; 
+    cursor: pointer;
     font-family: 'Segoe UI';
-
 }
-li a:hover {
+
+nav ul li a:hover {
     text-decoration: underline;
-    font-family: 'Segoe UI';
-
-}
-li {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer; 
-    font-family: 'Segoe UI';
-
-}
-li:hover {
-    text-decoration: underline;
-    font-family: 'Segoe UI';
-
 }
 
 .banner {
     width: 100%;
-    margin: 10px
+    margin: 10px;
     border-radius: 10px;
+    display: block;
 }
 
-.section{
+.section {
     margin: 20px 0;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 10px;
     background-color: dodgerblue;
     color: white;
 }
-.section h2{
+
+.section h2 {
     margin-top: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 30px;
 }
-.section h2:hover{
+
+.section h2:hover {
     text-decoration: underline;
 }
+
 .searchBar {
     width: 95%;
-    padding: 10px;  
+    padding: 10px;
     margin: 20px auto;
     display: block;
     border: 2px solid dodgerblue;
     color: black;
     border-radius: 20px;
 }
+
 .LoginWrapper {
     display: flex;
     justify-content: center;
@@ -239,7 +248,7 @@ li:hover {
 }
 
 .LoginCard {
-    background-color: rgb(178, 211, 255); /* Matches your MainMvContainer */
+    background-color: rgb(178, 211, 255);
     padding: 40px;
     border-radius: 10px;
     width: 100%;
@@ -272,7 +281,6 @@ li:hover {
     padding: 12px;
     border: 2px solid white;
     border-radius: 8px;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
     font-family: Arial, sans-serif;
 }
 
@@ -316,10 +324,9 @@ li:hover {
 .LoginFooter a:hover {
     text-decoration: underline;
 }
-/* --- Register Specific Tweaks --- */
 
 .RegisterCard {
-    max-width: 450px; /* Slightly wider for the extra fields */
+    max-width: 450px;
 }
 
 .CheckboxGroup {
@@ -344,36 +351,16 @@ li:hover {
     font-weight: bold;
 }
 
-/* Hover effect to match your MovieContainer style */
 .RegisterCard:hover {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     transition: box-shadow 0.3s ease;
 }
 
-/* Update the existing Header class */
-.Header {
-    background-color: dodgerblue;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    
-    /* New Flexbox properties */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.HeaderContent {
-    flex-grow: 1;
-}
-
-/* Login Icon Styles */
 .loginIcon {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: white; /* Adds a white circle background behind the icon */
+    background: dodgerblue;
     padding: 5px;
     transition: transform 0.3s, background-color 0.3s;
     cursor: pointer;
@@ -382,17 +369,38 @@ li:hover {
 
 .loginIcon:hover {
     transform: scale(1.1);
-    background-color: #f0f0f0;
-    border-color: white;
 }
 
-/* Ensure the header text doesn't shift weirdly on mobile */
-@media (max-width: 600px) {
-    .Header {
-        padding: 20px 10px;
-    }
-    .loginIcon {
-        width: 35px;
-        height: 35px;
-    }
+@media (max-width: 768px) {
+    .Title { font-size: 2rem; }
+    .Desc { font-size: 1.2rem; }
+    .movieName { font-size: 1.5rem; }
+    .movieGenre { font-size: 1rem; }
+    .movieRating { font-size: 1rem; }
+    .movieDesc { font-size: 0.95rem; }
+    .MovieContainer { grid-template-columns: 1fr; }
+    .movieImg { grid-row: 1; grid-column: 1; }
+    .movieDetails { flex-direction: column; align-items: flex-start; }
+    nav ul { gap: 10px; }
+}
+
+@media (max-width: 480px) {
+    .Title { font-size: 1.5rem; }
+    .Desc { font-size: 1rem; }
+    .movieName { font-size: 1.2rem; }
+    .movieGenre { font-size: 0.9rem; }
+    .movieRating { font-size: 0.9rem; }
+    .movieDesc { font-size: 0.85rem; }
+    .LoginCard { padding: 20px; }
+    .LoginTitle { font-size: 22px; }
+    .LoginButton { font-size: 14px; padding: 10px; }
+    .loginIcon { width: 35px; height: 35px; }
+}
+
+@media (max-width: 768px) {
+    .Title { font-size: 2rem; letter-spacing: 2px; }
+}
+
+@media (max-width: 480px) {
+    .Title { font-size: 1.5rem; letter-spacing: 1px; }
 }

@@ -1,71 +1,58 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
-    background: #ffffff;
-    color: #222;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: dodgerblue;
+    color: #333;
+    line-height: 1.6;
 }
 
 .Header {
-    background-color: dodgerblue ;
+    background-color: dodgerblue;
     color: white;
     padding: 40px 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
 .Title {
-    color: white
-    font-size: 50px;
+    color: white;
+    font-size: 3rem;
     margin: 0;
     letter-spacing: 4px;
 }
+
 .Desc {
     margin: 0.5rem 0;
     color: #ffffff;
-}
-
-.Main {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 1rem;
-    overflow-x: auto;
-    /* scroll-snap-type: x mandatory; */
-    padding: 20px;
-    padding-top: 0;
-    background: dodgerblue;
-    margin: 0 10px 10px 10px;
-    border-radius: 0 0 10px 10px;
-}
-/* .Main::-webkit-scrollbar {
-    display: none;
-} */
-.Main {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    font-size: 1.5rem;
 }
 
 .MainMvContainer {
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(178, 211, 255);
+    width: auto;
+    margin: 30px;
+    padding: 30px;
     border-radius: 10px;
-    width: 700px;
-    display: grid;
-    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
+
 .MovieContainer {
-    grid-row: 1;
-    flex: 0 0 auto;
-    /* width: 300px; */
-    scroll-snap-align: start;
     display: grid;
     grid-template-columns: 120px 1fr;
-    grid-template-rows: auto auto 1fr;
-    gap: 0.5rem 1rem;
+    gap: 1rem;
     background: #ffffff;
     border-radius: 8px;
     padding: 1rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
 .movieImg {
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
     grid-column: 1;
     width: 100%;
     border-radius: 6px;
@@ -78,44 +65,46 @@ body {
 
 .movieDetails {
     grid-column: 2;
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 }
 
 .movieName {
     color: dodgerblue;
-    grid-row: 1;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
     margin: 0;
     text-decoration: none;
 }
+
 .movieName:hover {
     text-decoration: underline;
 }
 
 .movieGenre {
-    grid-row: 2;
     font-style: italic;
     color: #0066cc;
+    font-size: 1.2rem;
     margin: 0;
 }
 
 .movieRating {
-    grid-row: 3;  
     color: rgb(255, 174, 0);
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    
+    font-size: 1.1rem;
 }
 
 .movieDesc {
-    grid-row:2;
-    margin: 10px;
+    grid-column: 2;
+    margin-top: 1rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: bold;
+    color: #444;
 }
-
 
 .Footer {
     text-align: center;
@@ -124,14 +113,9 @@ body {
     color: #f5f5f5;
     border-radius: 0 0 10px 10px;
 }
+
 .FooterText {
     margin: 0.2rem 0;
-}
-
-.socmedLogo {
-    width: 24px;
-    height: 24px;
-    margin-top: 0.5rem;
 }
 
 .scrollHead {
@@ -140,121 +124,9 @@ body {
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
-    padding-bottom: ;
     background: dodgerblue;
     border-radius: 10px 10px 0 0;
     margin: 10px 10px 0 10px;
-}
-
-nav {
-    background-color: dodgerblue;
-    padding: 10px;
-    font-family: 'Segoe UI';
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-    font-family: 'Segoe UI';
-
-}
-li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer; 
-    font-family: 'Segoe UI';
-
-}
-li a:hover {
-    text-decoration: underline;
-    font-family: 'Segoe UI';
-
-}
-li {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer; 
-    font-family: 'Segoe UI';
-
-}
-li:hover {
-    text-decoration: underline;
-    font-family: 'Segoe UI';
-
-}
-
-.banner {
-    width: 100%;
-    margin: 10px
-    border-radius: 10px;
-}
-
-.section{
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: dodgerblue;
-    color: white;
-}
-.section h2{
-    margin-top: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
-}
-.section h2:hover{
-    text-decoration: underline;
-}
-
-.Image{
-    border-radius: 10px;
-    float: left;
-    margin: 10px;
-}
-.movieTitle {
-    font-family: Arial, Helvetica, sans-serif;
-    color: dodgerblue;
-    font-size: 50px;
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: dodgerblue ;
-    color: #333;
-    line-height: 1.6;
-}
-
-.Header {
-    background-color: dodgerblue ;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-li {
-    color: dodgerblue;
-}
-
-#story p,
-#reviews p {
-    color: dodgerblue;
-    font-weight: bold;
 }
 
 nav {
@@ -262,15 +134,33 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1000;
+    background-color: dodgerblue;
+    padding: 10px;
+    font-family: 'Segoe UI';
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
+
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     background: #ffffff;
     padding: 15px;
     gap: 0;
+}
+
+nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+nav ul li {
+    flex: 0 0 auto;
 }
 
 nav ul li a {
@@ -278,6 +168,7 @@ nav ul li a {
     text-decoration: none;
     padding: 12px 20px;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
@@ -285,12 +176,12 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-.MainMvContainer {
-    background-color: rgb(178, 211, 255); width: auto; border-radius: 10px;
-    margin: 30px;
-    padding: 30px;
+.banner {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin: 10px;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .section {
@@ -307,10 +198,22 @@ nav ul li a:hover {
     font-size: 32px;
 }
 
-.banner {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+.section h2:hover {
+    text-decoration: underline;
+}
+
+.Image {
+    border-radius: 10px;
+    float: left;
+    margin: 10px;
+}
+
+.movieTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    color: dodgerblue;
+    font-size: 3rem;
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 ul {
@@ -318,5 +221,55 @@ ul {
 }
 
 li {
-    //  margin-bottom: 10px;
+    color: dodgerblue;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Segoe UI';
+}
+
+li:hover {
+    text-decoration: underline;
+}
+
+#story p,
+#reviews p {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .Title { font-size: 2rem; }
+    .Desc { font-size: 1.2rem; }
+    .movieName { font-size: 1.5rem; }
+    .movieGenre { font-size: 1rem; }
+    .movieRating { font-size: 1rem; }
+    .movieDesc { font-size: 0.95rem; }
+    .MovieContainer { grid-template-columns: 1fr; }
+    .movieImg { grid-row: 1; grid-column: 1; }
+}
+
+@media (max-width: 480px) {
+    .Title { font-size: 1.5rem; }
+    .Desc { font-size: 1rem; }
+    .movieName { font-size: 1.2rem; }
+    .movieGenre { font-size: 0.9rem; }
+    .movieRating { font-size: 0.9rem; }
+    .movieDesc { font-size: 0.85rem; }
+}
+@media (max-width: 768px) {
+    .MovieContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+    .movieImg {
+        grid-row: 1;
+        grid-column: 1;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .movieDetails {
+        grid-row: 2;
+        grid-column: 1;
+    }
 }

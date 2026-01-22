@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: white;
+    background: dodgerblue;
     color: #222;
 }
 
@@ -12,15 +12,20 @@ body {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
 .Title {
-    color: white
-    font-size: 50px;
+    color: white;
+    font-size: clamp(1.8rem, 6vw, 3rem);
     margin: 0;
     letter-spacing: 4px;
+    white-space: nowrap;
 }
+
 .Desc {
     margin: 0.5rem 0;
     color: #ffffff;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    text-align: center;
 }
 
 
@@ -389,4 +394,11 @@ li:hover {
         width: 35px;
         height: 35px;
     }
+}
+@media (max-width: 768px) {
+    .Title { font-size: 2rem; letter-spacing: 2px; }
+}
+
+@media (max-width: 480px) {
+    .Title { font-size: 1.5rem; letter-spacing: 1px; }
 }
