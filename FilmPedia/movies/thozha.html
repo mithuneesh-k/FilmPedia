@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Thozha (2016)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/thozha.png" alt="thozha">
+                <div class="movieDetails">
+                    <a href="movies/thozha.html" class="movieName" >Thozha (2016)</a>
+                    <p class="movieGenre" >Drama • Comedy • Friendship</p>
+                    <p class="movieRating">IMDB: 7.9</p>
+                </div>
+            </div>
+            <p class="movieDesc">A heartwarming story of an unlikely friendship between a wealthy quadriplegic and his spirited caretaker, exploring life, laughter, and second chances.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/0Xzv0pYfFzM" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Thozha Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Karthi</strong> as Seenu</li>
+                <li><strong>Nagarjuna Akkineni</strong> as Vikramadhitya</li>
+                <li><strong>Tamannaah Bhatia</strong> as Keerthi</li>
+                <li><strong>Prakash Raj</strong> as Prakash</li>
+                <li><strong>Jayasudha</strong> as Vikramadhitya’s sister</li>
+                <li><strong>Ali</strong> as Seenu’s friend</li>
+                <li><em>Directed by Vamsi Paidipally</em></li>
+                <li><em>Written by Vamsi Paidipally, Abburi Ravi</em></li>
+                <li><em>Produced by PVP Cinema</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Thozha (2016) is the Tamil adaptation of the French film *The Intouchables*. It tells the story of Vikramadhitya, a wealthy man left paralyzed after an accident, and Seenu, a carefree young man hired as his caretaker. Their bond grows into a deep friendship, teaching both men about trust, joy, and living life to the fullest despite challenges.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.8/5 stars, praised for its emotional depth and humor.</li>
+                <li><strong>IMDb:</strong> Holds a 7.9/10 rating with thousands of votes, showing strong audience appreciation.</li>
+                <li><strong>Rotten Tomatoes:</strong> Not officially rated, but critics highlighted its heartfelt performances and adaptation quality.</li>
+                <li><strong>Metacritic:</strong> Regional reviews praised the balance of comedy and drama, with user ratings around 7.5.</li>
+                <li><strong>X (Twitter):</strong> Fans celebrated the chemistry between Karthi and Nagarjuna, calling it “uplifting and inspiring.”</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> March 25, 2016 (India)</li>
+                <li><strong>Runtime:</strong> 158 minutes</li>
+                <li><strong>Budget:</strong> ₹45 crore</li>
+                <li><strong>Box Office:</strong> ₹112 crore worldwide</li>
+                <li>Best enjoyed with family for its mix of humor and heartfelt drama.</li>
+                <li>Available in both Tamil (*Thozha*) and Telugu (*Oopiri*).</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Adapted from the French classic *The Intouchables* (2011).</li>
+                <li>Nagarjuna’s performance as a quadriplegic was widely acclaimed for its authenticity.</li>
+                <li>Karthi’s comedic timing brought a refreshing balance to the emotional narrative.</li>
+                <li>The film was simultaneously shot in Tamil (*Thozha*) and Telugu (*Oopiri*).</li>
+                <li>Music composed by Gopi Sunder added to the film’s uplifting tone.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2016 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

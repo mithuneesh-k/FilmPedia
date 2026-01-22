@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>The Secret Life of Walter Mitty (2013)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+			<div class="MovieContainer">
+					<img class="movieImg" src="photos/waltermitty.png" alt="waltermitty">
+				<div class="movieDetails">
+					<a href="movies/waltermitty.html" class="movieName">The Secret life of Walter Mitty</a>
+					<p class="movieGenre">Travel • Feelgood</p>
+					<p class="movieRating">IMDB: 7.3</p>
+				</div>
+			</div>
+			<p class="movieDesc">An average employee at Empire State embarks on a wonderful journey while looking for a missing specimen.</p>
+        </div>
+
+        <nav>
+            <ul  style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="http://www.youtube.com/watch?v=QD6cy4PBQPI" target="_blank" style="color: #2980b9; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official Secret Life of Walter Mitty Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column; list-style-type: none;">
+                <li><strong>Ben Stiller</strong> as Walter Mitty</li>
+                <li><strong>Kristen Wiig</strong> as Cheryl Melhoff</li>
+                <li><strong>Adam Scott</strong> as Ted Hendricks</li>
+                <li><strong>Shirley MacLaine</strong> as Edna Mitty</li>
+                <li><strong>Kathryn Hahn</strong> as Odessa Mitty</li>
+                <li><strong>Sean Penn</strong> as Sean O'Connell</li>
+                <li><strong>Patton Oswalt</strong> as Todd Maher</li>
+                <li><em>Directed by Ben Stiller</em></li>
+                <li><em>Produced by Stuart Cornfeld, Ben Stiller, Samuel Goldwyn Jr.</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Walter Mitty is a negative assets manager at Life magazine who frequently daydreams of fantastic adventures. When the magazine prepares for its final print issue, a crucial negative for the cover photo goes missing. To find the elusive photographer Sean O'Connell, Walter must step out of his comfort zone and travel to Greenland, Iceland, and the Himalayas, finally living a life more daring than his dreams.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li><strong>IMDb:</strong> Rated 7.3/10, praised for its breathtaking cinematography and inspiring message.</li>
+                <li><strong>Rotten Tomatoes:</strong> Holds a 52% Critic score but a much higher 71% Audience score.</li>
+                <li><strong>Metacritic:</strong> Scored 54, reflecting mixed to positive critical reception.</li>
+                <li><strong>Visual Mastery:</strong> Widely acclaimed for its stunning visuals and "feel-good" atmosphere.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li><strong>Release Date:</strong> December 25, 2013 (US)</li>
+                <li><strong>Runtime:</strong> 114 minutes</li>
+                <li><strong>Budget:</strong> $90 million</li>
+                <li><strong>Box Office:</strong> $188.1 million worldwide</li>
+                <li>Perfect for anyone needing a boost of inspiration or "wanderlust."</li>
+                <li>Look out for the incredible soundtrack featuring José González.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column; list-style-type: none;">
+                <li>The film is based on James Thurber's 1939 short story of the same name.</li>
+                <li>Much of the film was shot on location in Iceland, showcasing its stunning landscapes.</li>
+                <li>Ben Stiller performed many of his own stunts, including the leap into the helicopter.</li>
+                <li>The "Life" magazine motto featured in the film was actually created for the movie.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if(href.startsWith('#') && href.length > 1) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

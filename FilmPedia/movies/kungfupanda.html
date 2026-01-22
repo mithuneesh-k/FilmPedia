@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Kung Fu Panda (2008)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/kungfupanda.png" alt="kung fu panda">
+                <div class="movieDetails">
+                    <a href="movies/kungfupanda.html" class="movieName" >Kung Fu Panda (2008)</a>
+                    <p class="movieGenre" >Animation • Action • Comedy</p>
+                    <p class="movieRating">IMDB: 7.6</p>
+                </div>
+            </div>
+            <p class="movieDesc">Po, a clumsy panda, dreams of becoming a kung fu master. When destiny calls, he must train with the Furious Five to protect the Valley of Peace from the villainous Tai Lung.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/PXi3Mv6KMzY" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Kung Fu Panda Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Jack Black</strong> as Po</li>
+                <li><strong>Dustin Hoffman</strong> as Master Shifu</li>
+                <li><strong>Angelina Jolie</strong> as Tigress</li>
+                <li><strong>Ian McShane</strong> as Tai Lung</li>
+                <li><strong>Jackie Chan</strong> as Monkey</li>
+                <li><strong>Seth Rogen</strong> as Mantis</li>
+                <li><strong>Lucy Liu</strong> as Viper</li>
+                <li><strong>David Cross</strong> as Crane</li>
+                <li><em>Directed by Mark Osborne & John Stevenson</em></li>
+                <li><em>Written by Jonathan Aibel & Glenn Berger</em></li>
+                <li><em>Produced by Melissa Cobb</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Kung Fu Panda (2008) tells the story of Po, a noodle-loving panda who unexpectedly becomes the Dragon Warrior. Despite his clumsiness, Po must train under Master Shifu and alongside the Furious Five to defeat Tai Lung, a powerful kung fu master bent on revenge. The film blends humor, action, and heart, emphasizing themes of self-belief and destiny.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.7/5 stars, praised for its humor and animation style.</li>
+                <li><strong>IMDb:</strong> Holds a 7.6/10 rating with over 500K votes, showing strong global appeal.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics gave it 87%, audiences 83%, making it a standout DreamWorks film.</li>
+                <li><strong>Metacritic:</strong> Scored 73 from critics, with users rating it around 8.0.</li>
+                <li><strong>X (Twitter):</strong> Fans still celebrate Po’s journey, calling it “inspiring and hilarious.”</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> June 6, 2008 (US)</li>
+                <li><strong>Runtime:</strong> 92 minutes</li>
+                <li><strong>Budget:</strong> $130 million</li>
+                <li><strong>Box Office:</strong> $631.7 million worldwide</li>
+                <li>Best enjoyed with family for its mix of humor and action.</li>
+                <li>Spawned two sequels and a Netflix series, expanding the Kung Fu Panda universe.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Jack Black improvised many of Po’s funniest lines.</li>
+                <li>The film’s animation was inspired by traditional Chinese art and culture.</li>
+                <li>Kung Fu Panda was nominated for the Academy Award for Best Animated Feature.</li>
+                <li>It became one of DreamWorks’ most successful franchises, spawning sequels and spin-offs.</li>
+                <li>Po’s character design was influenced by real pandas observed at Chinese reserves.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2008 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

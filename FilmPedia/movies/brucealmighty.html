@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Bruce Almighty (2003)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/brucealmighty.png" alt="bruce almighty">
+                <div class="movieDetails">
+                    <a href="movies/brucealmighty.html" class="movieName" >Bruce Almighty (2003)</a>
+                    <p class="movieGenre" >Comedy • Fantasy</p>
+                    <p class="movieRating">IMDB: 6.8</p>
+                </div>
+            </div>
+            <p class="movieDesc">Bruce Nolan, a TV reporter, constantly complains about God until he is given divine powers to see if he can do a better job.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/fyNH3n6VvO8" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Bruce Almighty Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Jim Carrey</strong> as Bruce Nolan</li>
+                <li><strong>Morgan Freeman</strong> as God</li>
+                <li><strong>Jennifer Aniston</strong> as Grace Connelly</li>
+                <li><strong>Philip Baker Hall</strong> as Jack Baylor</li>
+                <li><strong>Steve Carell</strong> as Evan Baxter</li>
+                <li><strong>Catherine Bell</strong> as Susan Ortega</li>
+                <li><em>Directed by Tom Shadyac</em></li>
+                <li><em>Written by Steve Koren, Mark O’Keefe</em></li>
+                <li><em>Produced by Tom Shadyac, Michael Bostick</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Bruce Almighty (2003) follows Bruce Nolan, a frustrated TV reporter who blames God for his misfortunes. In response, God grants Bruce His powers to see if he can handle the responsibility. Bruce initially uses them for selfish gains but soon learns valuable lessons about love, humility, and the importance of free will.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Fans enjoyed Carrey’s comedic performance, averaging around 3.2/5 stars.</li>
+                <li><strong>IMDb:</strong> Holds a 6.8/10 rating with over 430K votes, showing solid audience approval.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics gave it 48%, but audiences were more favorable at 72%.</li>
+                <li><strong>Metacritic:</strong> Scored 46 from critics, but users rated it higher at 7.0.</li>
+                <li><strong>X (Twitter):</strong> Still remembered fondly, especially Morgan Freeman’s portrayal of God.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> May 23, 2003 (US)</li>
+                <li><strong>Runtime:</strong> 101 minutes</li>
+                <li><strong>Budget:</strong> $81 million</li>
+                <li><strong>Box Office:</strong> $484 million worldwide</li>
+                <li>Best enjoyed as a lighthearted comedy with spiritual undertones.</li>
+                <li>Spawned a spin-off, “Evan Almighty” (2007).</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Morgan Freeman’s portrayal of God became iconic and widely praised.</li>
+                <li>Jim Carrey improvised many of his comedic scenes.</li>
+                <li>The film was shot in Buffalo, New York, where Bruce works as a TV reporter.</li>
+                <li>It was one of the highest-grossing comedies of 2003.</li>
+                <li>Jennifer Aniston’s role was praised for grounding the film emotionally.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2003 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

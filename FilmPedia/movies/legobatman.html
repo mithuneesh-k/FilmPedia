@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>The Lego Batman Movie (2017)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/legobatman.png" alt="lego batman">
+                <div class="movieDetails">
+                    <a href="movies/legobatman.html" class="movieName" >The Lego Batman Movie (2017)</a>
+                    <p class="movieGenre" >Animation • Comedy • Superhero</p>
+                    <p class="movieRating">IMDB: 7.3</p>
+                </div>
+            </div>
+            <p class="movieDesc">Batman must learn to work with others when Gotham is threatened, all while navigating his own loneliness and ego in this hilarious Lego adventure.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/rGQUKzSD5f4" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Lego Batman Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Will Arnett</strong> as Batman / Bruce Wayne</li>
+                <li><strong>Michael Cera</strong> as Robin / Dick Grayson</li>
+                <li><strong>Rosario Dawson</strong> as Barbara Gordon</li>
+                <li><strong>Ralph Fiennes</strong> as Alfred Pennyworth</li>
+                <li><strong>Zach Galifianakis</strong> as The Joker</li>
+                <li><strong>Jenny Slate</strong> as Harley Quinn</li>
+                <li><em>Directed by Chris McKay</em></li>
+                <li><em>Written by Seth Grahame-Smith, Chris McKenna, Erik Sommers</em></li>
+                <li><em>Produced by Dan Lin, Phil Lord, Christopher Miller</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>The Lego Batman Movie (2017) is a spin-off of The Lego Movie. It follows Batman as he faces his greatest fear: opening up to others. When the Joker threatens Gotham, Batman must learn teamwork and family values, especially with Robin and Barbara Gordon, while confronting his own insecurities and loneliness.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.6/5 stars, praised for its humor and meta references to Batman lore.</li>
+                <li><strong>IMDb:</strong> Holds a 7.3/10 rating with over 150K votes, showing strong audience enjoyment.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics gave it 90%, audiences 80%, making it one of the best-reviewed Batman films.</li>
+                <li><strong>Metacritic:</strong> Scored 75 from critics, with users rating it around 7.8.</li>
+                <li><strong>X (Twitter):</strong> Fans loved its comedic take on Batman, calling it “the funniest Batman movie ever.”</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> February 10, 2017 (US)</li>
+                <li><strong>Runtime:</strong> 104 minutes</li>
+                <li><strong>Budget:</strong> $80 million</li>
+                <li><strong>Box Office:</strong> $312 million worldwide</li>
+                <li>Best enjoyed with family and friends for its humor and vibrant animation.</li>
+                <li>Features countless references to Batman’s cinematic and comic history.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Will Arnett reprised his role as Lego Batman from *The Lego Movie* (2014).</li>
+                <li>The film pokes fun at nearly every Batman movie ever made.</li>
+                <li>Features cameos from villains across pop culture, including Voldemort and Sauron.</li>
+                <li>Chris McKay, the director, later went on to direct *Renfield* (2023).</li>
+                <li>The film’s humor and animation style made it a critical and commercial success.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2017 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

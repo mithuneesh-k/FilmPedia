@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>RRR (2022)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/rrr.png" alt="RRR Movie">
+                <div class="movieDetails">
+                    <a href="movies/rrr.html" class="movieName" >RRR (2022)</a>
+                    <p class="movieGenre" >Action • Drama • Period Epic</p>
+                    <p class="movieRating">IMDB: 7.8</p>
+                </div>
+            </div>
+            <p class="movieDesc">A fictional tale of two legendary Indian revolutionaries, Alluri Sitarama Raju and Komaram Bheem, and their journey away from home before they started fighting for their country in the 1920s.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px;">
+                <li><a href="#moviePoint">Film</a></li>
+                <li><a href="#castCrew">Cast & Crew</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#watchersGuide">Watcher's Guide</a></li>
+                <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/oO8TTM2FgIA?si=-edN8xItYAhUiS1s" target="_blank" style="color: #ff4500; font-size: 18px; text-decoration: none; font-weight: bold;">Watch the Official RRR Trailer</a>
+        </div>
+
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>N.T. Rama Rao Jr.</strong> as Komaram Bheem</li>
+                <li><strong>Ram Charan</strong> as Alluri Sitarama Raju</li>
+                <li><strong>Alia Bhatt</strong> as Sita</li>
+                <li><strong>Ajay Devgn</strong> as Venkata Rama Raju</li>
+                <li><strong>Ray Stevenson</strong> as Governor Scott Buxton</li>
+                <li><strong>Alison Doody</strong> as Catherine Buxton</li>
+                <li><strong>Olivia Morris</strong> as Jennifer (Jenny)</li>
+                <li><em>Directed & Written by S.S. Rajamouli</em></li>
+                <li><em>Music by M.M. Keeravani</em></li>
+                <li><em>Produced by D.V.V. Danayya</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Set in 1920s British-occupied India, the story follows Bheem, a tribal protector on a mission to rescue a kidnapped girl, and Raju, a high-ranking police officer serving the British. Though they become best friends unknowingly, their conflicting loyalties eventually lead to an explosive confrontation. The film is a masterclass in "maximalist" cinema, blending high-octane action with a deep emotional core about brotherhood and revolution.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Rotten Tomatoes:</strong> 95% Critics Score. Critics worldwide called it "unbelievably entertaining" and "a triumph of imagination."</li>
+                <li><strong>Letterboxd:</strong> 4.2/5. It became a viral sensation in the West, leading to sold-out "Encore" screenings across the US.</li>
+                <li><strong>Oscars:</strong> Made history by winning the **Academy Award for Best Original Song** (Naatu Naatu).</li>
+                <li><strong>Global Impact:</strong> Ranked as one of the best films of 2022 by the National Board of Review.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Runtime:</strong> 187 minutes (3 hours 7 mins).</li>
+                <li><strong>Budget:</strong> ₹550 crore ($72 million), making it one of India's most expensive films.</li>
+                <li><strong>Box Office:</strong> Over ₹1,300 crore ($175 million) worldwide.</li>
+                <li><strong>Best Experience:</strong> Must be watched on the biggest screen possible to appreciate the scale of the VFX and action.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>The "Naatu Naatu" song was filmed in Ukraine at the Mariinskyi Palace (the Presidential Palace) just months before the war began.</li>
+                <li>The film's title RRR stands for **Rise, Roar, Revolt** (originally a working title based on the names of the Director and lead actors).</li>
+                <li>The interval fight sequence took 65 nights to film and involved thousands of background actors.</li>
+                <li>Director S.S. Rajamouli spent 300 days just on principal photography.</li>
+                <li>The bridge rescue scene alone took years of pre-visualization and months of filming to perfect.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+
+    </body>
+</html>

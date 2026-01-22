@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Serendipity (2001)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/serendipity.png" alt="serendipity">
+                <div class="movieDetails">
+                    <a href="movies/serendipity.html" class="movieName" >Serendipity (2001)</a>
+                    <p class="movieGenre" >Romance • Comedy • Drama</p>
+                    <p class="movieRating">IMDB: 6.9</p>
+                </div>
+            </div>
+            <p class="movieDesc">A romantic comedy about fate and chance, where two strangers meet by accident and leave their future up to destiny.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/tOaNnRUpx40" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Serendipity Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>John Cusack</strong> as Jonathan Trager</li>
+                <li><strong>Kate Beckinsale</strong> as Sara Thomas</li>
+                <li><strong>Jeremy Piven</strong> as Dean Kansky</li>
+                <li><strong>Bridget Moynahan</strong> as Halley Buchanan</li>
+                <li><strong>Molly Shannon</strong> as Eve</li>
+                <li><strong>John Corbett</strong> as Lars Hammond</li>
+                <li><em>Directed by Peter Chelsom</em></li>
+                <li><em>Written by Marc Klein</em></li>
+                <li><em>Produced by Simon Fields</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Serendipity (2001) tells the story of Jonathan and Sara, who meet by chance in New York City. Believing in destiny, Sara insists they let fate decide if they are meant to be together. Years later, both are engaged to other people but still feel drawn to each other, leading to a romantic search across time and distance.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.2/5 stars, praised for its charm and romantic theme.</li>
+                <li><strong>IMDb:</strong> Holds a 6.9/10 rating with over 120K votes, showing steady audience appreciation.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics gave it 59%, while audiences were more favorable at 72%.</li>
+                <li><strong>Metacritic:</strong> Scored 52 from critics, but users rated it higher at 7.0.</li>
+                <li><strong>X (Twitter):</strong> Fans often call it a “classic rom-com” and celebrate its theme of fate and love.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> October 5, 2001 (US)</li>
+                <li><strong>Runtime:</strong> 90 minutes</li>
+                <li><strong>Budget:</strong> $28 million</li>
+                <li><strong>Box Office:</strong> $77.5 million worldwide</li>
+                <li>Best enjoyed with someone special for its romantic charm.</li>
+                <li>Set against the backdrop of New York City, adding to its magical atmosphere.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>The film’s title comes from the famous Serendipity 3 dessert café in New York City.</li>
+                <li>John Cusack and Kate Beckinsale had instant chemistry, which made the film memorable.</li>
+                <li>The movie has become a popular holiday romance, often rewatched during Christmas season.</li>
+                <li>Marc Klein, the writer, based the story on his own fascination with fate and chance encounters.</li>
+                <li>The café scenes were filmed at the real Serendipity 3, a landmark in NYC.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2001 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

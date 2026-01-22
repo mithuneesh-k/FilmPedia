@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Tangled (2010)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/tangled.png" alt="tangled">
+                <div class="movieDetails">
+                    <a href="movies/tangled.html" class="movieName" >Tangled (2010)</a>
+                    <p class="movieGenre" >Animation • Adventure • Fantasy</p>
+                    <p class="movieRating">IMDB: 7.7</p>
+                </div>
+            </div>
+            <p class="movieDesc">Rapunzel, a princess with magical long hair, has spent her life locked in a tower. When a runaway thief stumbles upon her, she embarks on a journey to discover the world and her true destiny.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/ip_0CFKTO9E" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Tangled Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Mandy Moore</strong> as Rapunzel</li>
+                <li><strong>Zachary Levi</strong> as Flynn Rider</li>
+                <li><strong>Donna Murphy</strong> as Mother Gothel</li>
+                <li><strong>Ron Perlman</strong> as Stabbington Brother</li>
+                <li><strong>Brad Garrett</strong> as Hook Hand Thug</li>
+                <li><strong>Richard Kiel</strong> as Vlad</li>
+                <li><em>Directed by Nathan Greno & Byron Howard</em></li>
+                <li><em>Written by Dan Fogelman</em></li>
+                <li><em>Produced by Roy Conli</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Tangled (2010) is Disney’s modern retelling of the classic Rapunzel fairy tale. The film follows Rapunzel, a princess with magical hair that can heal and restore youth, who has been hidden away in a tower by Mother Gothel. When she meets Flynn Rider, a charming thief, she escapes her tower and embarks on an adventure to see the floating lanterns and discover her true identity.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.7/5 stars, praised for its humor and heartwarming story.</li>
+                <li><strong>IMDb:</strong> Holds a 7.7/10 rating with over 500K votes, showing strong audience love.</li>
+                <li><strong>Rotten Tomatoes:</strong> Critics gave it 89%, audiences 87%, making it one of Disney’s best modern animated films.</li>
+                <li><strong>Metacritic:</strong> Scored 71 from critics, with users rating it around 8.0.</li>
+                <li><strong>X (Twitter):</strong> Fans still celebrate its songs, especially “I See the Light,” and its vibrant animation style.</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> November 24, 2010 (US)</li>
+                <li><strong>Runtime:</strong> 100 minutes</li>
+                <li><strong>Budget:</strong> $260 million</li>
+                <li><strong>Box Office:</strong> $592.4 million worldwide</li>
+                <li>Best enjoyed with family for its humor, music, and adventure.</li>
+                <li>Features memorable songs by Alan Menken and Glenn Slater.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Tangled was Disney’s 50th animated feature film.</li>
+                <li>The film’s animation combined traditional hand-drawn techniques with CGI for a unique look.</li>
+                <li>“I See the Light” was nominated for an Academy Award for Best Original Song.</li>
+                <li>Rapunzel’s hair was animated with over 100,000 individual strands.</li>
+                <li>Originally titled “Rapunzel,” Disney changed it to “Tangled” to appeal to a broader audience.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2010 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>

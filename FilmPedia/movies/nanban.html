@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Nanban (2012)</title>
+        <link rel="stylesheet" href="movieStyle.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+         <div class="Header">
+            <h1 class="Title">F I L M P E D I A</h1>
+            <h3 class="Desc">A Movie Guide</h3>
+        </div>
+
+        <div id="moviePoint" class="MainMvContainer" >
+            <div class="MovieContainer">
+                <img class="movieImg" src="photos/nanban.png" alt="nanban">
+                <div class="movieDetails">
+                    <a href="movies/nanban.html" class="movieName" >Nanban (2012)</a>
+                    <p class="movieGenre" >Drama • Comedy • Friendship</p>
+                    <p class="movieRating">IMDB: 7.6</p>
+                </div>
+            </div>
+            <p class="movieDesc">A heartwarming Tamil film about friendship, love, and following one’s passion, adapted from the Hindi classic *3 Idiots*.</p>
+        </div>
+
+        <nav>
+            <ul style="border-radius: 10px; display: flex; overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+          <li><a href="#moviePoint">Film</a></li>
+          <li><a href="#castCrew">Cast & Crew</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#watchersGuide">Watcher's Guide</a></li>
+          <li><a href="#funFacts">Fun Facts</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h2>Trailer - Click ↓</h2>
+            <a href="https://youtu.be/0xWlWc3nq9M" target="_blank" style="color: dodgerblue; font-size: 18px; text-decoration: none;">Watch the Official Nanban Trailer</a>
+        </div>
+        <div id="castCrew" class="section">
+            <h2>Cast & Crew</h2>
+            <ul class="castList" style="flex-direction: column;">
+                <li><strong>Vijay</strong> as Panchavan Parivendan (Pari)</li>
+                <li><strong>Jiiva</strong> as Venkata Ramakrishnan (Venkat)</li>
+                <li><strong>Sathyan</strong> as Sevalkodi Senthil</li>
+                <li><strong>Shruti Haasan</strong> as Ria Santhanam</li>
+                <li><strong>Sathyaraj</strong> as Virumandi Santhanam (Virus)</li>
+                <li><strong>Ileana D'Cruz</strong> as Ria (Tamil version)</li>
+                <li><em>Directed by S. Shankar</em></li>
+                <li><em>Written by Abhijat Joshi, Rajkumar Hirani (adapted)</em></li>
+                <li><em>Produced by Gemini Film Circuit</em></li>
+                <li><em>Music by Harris Jayaraj</em></li>
+            </ul>
+        </div>
+
+        <div id="story" class="section">
+            <h2>Story</h2>
+            <p>Nanban (2012) is the Tamil remake of *3 Idiots*. It follows three engineering students—Pari, Venkat, and Senthil—through their journey of friendship, struggles, and self-discovery. Pari inspires his friends to pursue their passions rather than conforming to societal pressures. The film blends humor, emotion, and life lessons, emphasizing creativity and individuality over rote learning.</p>
+        </div>
+
+        <div id="reviews" class="section">
+            <h2>Reviews</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Letterboxd:</strong> Averaging 3.5/5 stars, praised for its heartfelt performances and humor.</li>
+                <li><strong>IMDb:</strong> Holds a 7.6/10 rating with thousands of votes, showing strong audience appreciation.</li>
+                <li><strong>Rotten Tomatoes:</strong> Not officially rated, but regional critics praised its faithful adaptation and emotional impact.</li>
+                <li><strong>Metacritic:</strong> Regional reviews highlight its entertainment value, with user ratings around 7.5.</li>
+                <li><strong>X (Twitter):</strong> Fans celebrated Vijay’s performance and Shankar’s direction, calling it “uplifting and inspiring.”</li>
+            </ul>
+        </div>
+
+        <div id="watchersGuide" class="section">
+            <h2>Watcher's Guide</h2>
+            <ul style="flex-direction: column;">
+                <li><strong>Release Date:</strong> January 12, 2012 (India)</li>
+                <li><strong>Runtime:</strong> 165 minutes</li>
+                <li><strong>Budget:</strong> ₹55 crore</li>
+                <li><strong>Box Office:</strong> ₹150 crore worldwide</li>
+                <li>Best enjoyed with friends for its themes of camaraderie and inspiration.</li>
+                <li>Features memorable songs composed by Harris Jayaraj.</li>
+            </ul>
+        </div>
+
+        <div id="funFacts" class="section">
+            <h2>Fun Facts</h2>
+            <ul style="flex-direction: column;">
+                <li>Nanban is a Tamil remake of the Hindi blockbuster *3 Idiots* (2009).</li>
+                <li>Director Shankar retained much of the original’s humor and emotional depth while adding Tamil cultural touches.</li>
+                <li>Vijay’s performance as Pari was widely praised for its charm and energy.</li>
+                <li>The film’s soundtrack by Harris Jayaraj became a chartbuster in Tamil Nadu.</li>
+                <li>Nanban was released during Pongal festival and became a major box office success.</li>
+            </ul>
+        </div>
+
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+        <div class="Footer">
+            <p class="FooterText">© 2012 FilmPedia. All rights reserved.</p>
+            <p class="FooterText">Mithuneesh. K</p>
+            <p>@FilmPedia</p>
+        </div>
+    </body>
+</html>
