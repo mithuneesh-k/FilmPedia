@@ -3,9 +3,14 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
 const PREFERRED = {
-    hollywood: [116745, 1084736, 634649, 315, 11354, 335977],
-    animated: [508439, 9502, 1374523, 569094, 324849, 38757],
-    indian: [579047, 81839, 870357, 801688, 379291, 1040523]
+    //  Walter Mitty | Superman 2025 | Spider-Man NWH | Bruce Almighty | Back to the Future | The Greatest Showman
+    hollywood: [116745, 1061474, 634649, 310, 105, 396535],
+
+    //  Demon Slayer Infinity Castle | Kung Fu Panda | LEGO Batman | Tangled | Fantastic Mr. Fox | Mahavatar Narshima
+    animated: [1311031, 9502, 324849, 38757, 10315, 1374523],
+
+    //  RRR | Jai Bhim | Thozha/Oopiri | Kalki 2898 AD | Sitaare Zameen Par
+    indian: [579974, 855400, 369925, 801688, 1190511]
 };
 
 async function fetchMovies(endpoint) {
