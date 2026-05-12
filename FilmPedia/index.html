@@ -5,90 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FilmPedia - Movie Guide</title>
     <link rel="icon" type="image/png" href="movies/photos/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
       :root {
         --primary-blue: #1e90ff; /* DodgerBlue */
-        --light-blue-card: rgb(178, 211, 255); /* Your preferred card color */
-        --text-dark: #222222;
-        --rating-gold: #ffae00;
-        --bg-white: #ffffff;
+        --card-bg: rgb(178, 211, 255);
+        --white: #ffffff;
       }
 
       body {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Inter', sans-serif;
         margin: 0;
-        background-color: var(--primary-blue); /* Solid blue background like original */
-        color: var(--text-dark);
+        background-color: var(--primary-blue);
+        color: #222;
       }
 
-      /* Header Style */
+      /* Clean Sleek Header */
       .Header {
         background-color: var(--primary-blue);
         color: white;
-        padding: 40px 20px;
-        text-align: center;
+        padding: 20px 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid white;
+        border-bottom: 2px solid rgba(255,255,255,0.3);
       }
-      .Title { font-size: 38px; font-weight: 900; letter-spacing: 4px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-      .Desc { margin: 10px 0 0; font-size: 20px; font-weight: 500; }
+      .HeaderContent { text-align: center; flex-grow: 1; }
+      .Title { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 0; }
+      .Desc { margin: 2px 0 0; font-size: 14px; font-weight: 400; opacity: 0.9; }
       
       .loginIcon { 
-        font-size: 45px;
+        font-size: 32px;
         color: white;
         cursor: pointer;
-        transition: transform 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        transition: transform 0.2s, opacity 0.2s;
+        text-decoration: none;
       }
-      .loginIcon:hover { transform: scale(1.1); }
+      .loginIcon:hover { transform: scale(1.1); opacity: 0.8; }
 
-      /* Tabs Navigation */
+      /* Professional Tabs */
       .tabs {
         display: flex;
         justify-content: center;
-        background: #0073e6; /* Darker blue for contrast */
-        padding: 15px;
-        gap: 15px;
+        background: #0078ee; /* Slightly darker blue */
+        padding: 10px;
+        gap: 10px;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
       .tab-btn {
         background: white;
         border: none;
-        padding: 12px 30px;
-        font-size: 15px;
-        font-weight: 900;
+        padding: 10px 25px;
+        font-size: 14px;
+        font-weight: 700;
         cursor: pointer;
-        border-radius: 30px;
+        border-radius: 50px;
         color: var(--primary-blue);
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.2s;
       }
       .tab-btn.active {
-        background: var(--light-blue-card);
+        background: var(--card-bg);
         color: #004a99;
-        transform: scale(1.05);
       }
+      .tab-btn:hover:not(.active) { background: #f0f0f0; }
 
       .tab-content { display: none; padding: 20px 0; }
       .tab-content.active { display: block; }
 
-      /* Section Headers */
       .scrollHead {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 900;
         color: white;
-        margin: 20px 20px 10px;
-        letter-spacing: 1px;
+        margin: 20px 30px 10px;
         text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       /* Horizontal Lists */
@@ -96,108 +90,92 @@
         display: flex;
         overflow-x: auto;
         gap: 20px;
-        padding: 20px;
-        background-color: var(--primary-blue);
+        padding: 20px 30px;
         scrollbar-width: thin;
         scrollbar-color: white var(--primary-blue);
       }
-      .Main::-webkit-scrollbar { height: 8px; }
+      .Main::-webkit-scrollbar { height: 6px; }
       .Main::-webkit-scrollbar-thumb { background: white; border-radius: 10px; }
 
-      /* Movie Cards - YOUR PREFERRED LOOK */
+      /* Movie Cards */
       .MainMvContainer {
         flex: 0 0 auto;
-        background: var(--light-blue-card); /* Light Blue Card Body */
-        width: 360px;
+        background: var(--card-bg);
+        width: 350px;
         padding: 15px;
-        border-radius: 15px;
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       }
-      .MainMvContainer:hover { transform: translateY(-5px); }
-
       .MovieContainer {
         display: flex;
-        background: var(--bg-white); /* White Inner Box */
-        padding: 15px;
-        border-radius: 10px;
+        background: white;
+        padding: 12px;
+        border-radius: 15px;
         gap: 15px;
-        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
       }
-      .movieImg { width: 100px; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-      .movieDetails { display: flex; flex-direction: column; justify-content: flex-start; }
+      .movieImg { width: 100px; height: 150px; border-radius: 10px; object-fit: cover; }
+      .movieDetails { display: flex; flex-direction: column; justify-content: center; }
       
       .movieName {
         color: var(--primary-blue);
-        font-size: 20px;
-        font-weight: 900;
+        font-size: 18px;
+        font-weight: 700;
         text-decoration: none;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
         line-height: 1.2;
       }
-      .movieName:hover { text-decoration: underline; }
-      
-      .movieGenre { font-size: 14px; font-weight: 500; color: #0066cc; margin-bottom: 10px; font-style: italic; }
-      .movieRating { font-size: 17px; color: var(--rating-gold); font-weight: 900; }
+      .movieGenre { font-size: 13px; color: #666; margin-bottom: 8px; font-style: italic; }
+      .movieRating { font-size: 16px; color: #ffae00; font-weight: 900; }
 
       .movieDesc {
-        font-size: 15px;
-        margin: 15px 5px 5px;
-        color: #1a1a1a; /* Bold Dark Text on Light Blue */
-        line-height: 1.5;
+        font-size: 14px;
+        margin: 15px 5px 0;
+        color: #111;
+        line-height: 1.4;
         font-weight: 700;
-        font-family: 'Cambria', serif;
       }
 
-      /* Search Bar */
-      .search-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+      /* Global Search Layout */
+      .search-container { max-width: 600px; margin: 20px auto; padding: 0 20px; }
       .searchBar {
         width: 100%;
-        padding: 18px 30px;
+        padding: 14px 25px;
         border-radius: 50px;
-        border: 4px solid var(--light-blue-card);
+        border: 3px solid var(--card-bg);
         background: white;
-        font-size: 18px;
+        font-size: 16px;
         outline: none;
-        box-sizing: border-box;
         color: var(--primary-blue);
-        font-weight: 900;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        font-weight: 700;
       }
-      .searchBar:focus {
-        border: 2px solid var(--md-sys-color-primary);
-      }
-
-      /* Grid for Global Search */
       .grid-layout {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         gap: 20px;
-        padding: 20px;
+        padding: 20px 30px;
       }
 
       .Footer {
         text-align: center;
-        padding: 40px 20px;
-        background: var(--md-sys-color-surface-container);
-        color: var(--md-sys-color-primary);
-        border-top: 1px solid rgba(0,0,0,0.1);
-        margin-top: 40px;
+        padding: 30px;
+        color: white;
+        font-weight: 700;
+        opacity: 0.9;
       }
-      .loading { text-align: center; width: 100%; padding: 40px; color: var(--md-sys-color-primary); }
+      .loading { text-align: center; width: 100%; padding: 40px; color: white; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <div class="Header">
-        <div style="width: 48px;"></div>
-        <div>
+        <div style="width: 32px;"></div>
+        <div class="HeaderContent">
             <h1 class="Title">FILMPEDIA</h1>
             <p class="Desc">A Movie Guide</p>
         </div>
-        <a href="login.html"><span class="material-icons loginIcon">account_circle</span></a>
+        <a href="login.html" class="loginIcon"><span class="material-icons">account_circle</span></a>
     </div>
 
     <div class="tabs">
@@ -207,17 +185,17 @@
 
     <!-- HOME TAB -->
     <div id="home-tab" class="tab-content active">
-        <div class="scrollHead">Trending Now</div>
-        <div class="Main" id="trending-list"><div class="loading">Loading movies...</div></div>
+        <div class="scrollHead">Trending This Week</div>
+        <div class="Main" id="trending-list"><div class="loading">Fetching trends...</div></div>
 
-        <div class="scrollHead">Hollywood Favorites</div>
-        <div class="Main" id="hollywood-list"><div class="loading">Loading movies...</div></div>
+        <div class="scrollHead">Hollywood Hits</div>
+        <div class="Main" id="hollywood-list"><div class="loading">Loading favorites...</div></div>
 
         <div class="scrollHead">Animated Hits</div>
         <div class="Main" id="animated-list"><div class="loading">Loading movies...</div></div>
 
         <div class="scrollHead">Indian Classics</div>
-        <div class="Main" id="indian-list"><div class="loading">Loading movies...</div></div>
+        <div class="Main" id="indian-list"><div class="loading">Loading classics...</div></div>
     </div>
 
     <!-- EXPLORE TAB -->
@@ -230,8 +208,7 @@
     </div>
 
     <div class="Footer">
-        <p>© 2025 FilmPedia. All rights reserved.</p>
-        <p>Created by Mithuneesh. K</p>
+        <p>© 2025 FilmPedia. Created by Mithuneesh. K</p>
     </div>
 
     <script>
@@ -286,12 +263,16 @@
         } catch (e) { console.log(e); }
       }
 
+      let searchTimer;
       function globalSearch(query) {
-        if (query.length > 2) {
-          fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `Results for: ${query.toUpperCase()}`);
-        } else if (query.length === 0) {
-          fetchExplore('/movie/popular');
-        }
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          if (query.length > 2) {
+            fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `Results for: ${query}`);
+          } else if (query.length === 0) {
+            fetchExplore('/movie/popular');
+          }
+        }, 300);
       }
 
       function renderCard(movie, container) {
