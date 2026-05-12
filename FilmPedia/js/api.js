@@ -19,7 +19,7 @@ async function fetchMovies(endpoint) {
 }
 
 async function fetchMovieById(id) {
-    return await fetchMovies(`/movie/${id}?append_to_response=credits,videos`);
+    return await fetchMovies(`/movie/${id}`);
 }
 
 function renderMovieCard(movie, container, basePath = '') {
@@ -33,7 +33,7 @@ function renderMovieCard(movie, container, basePath = '') {
                 <div class="movieDetails">
                     <a href="${basePath}movies/movie-details.html?tmdbId=${movie.id}" class="movieName">${movie.title}</a>
                     <p class="movieGenre">${year}</p>
-                    <p class="movieRating">⭐ ${movie.vote_average.toFixed(1)}</p>
+                    <p class="movieRating">⭐ ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}</p>
                 </div>
             </div>
             <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 110) + '...' : 'No description available.'}</p>
