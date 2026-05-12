@@ -26,36 +26,34 @@
     <input type="text" class="searchBar" placeholder="Search for movies..." onkeyup="searchMovies()">
 
 
-    <!-- TRENDING SECTION -->
-    <div class="scrollHead">
-        <p>TRENDING MOVIES</p>
-    </div>
-    <div class="Main" id="trending-list">
-        <div class="loading">Discovering trends...</div>
+    <!-- TAB NAVIGATION -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('home')">HOME</button>
+        <button class="tab-btn" onclick="switchTab('explore')">GLOBAL SEARCH</button>
     </div>
 
-    <!-- HOLLYWOOD SECTION -->
-    <div class="scrollHead">
-        <p>HOLLYWOOD HITS</p>
-    </div>
-    <div class="Main" id="hollywood-list">
-        <div class="loading">Loading Hollywood...</div>
+    <!-- HOME TAB CONTENT -->
+    <div id="home-tab" class="tab-content active">
+        <div class="scrollHead"><p>TRENDING MOVIES</p></div>
+        <div class="Main" id="trending-list"><div class="loading">Discovering trends...</div></div>
+
+        <div class="scrollHead"><p>HOLLYWOOD HITS</p></div>
+        <div class="Main" id="hollywood-list"><div class="loading">Loading Hollywood...</div></div>
+
+        <div class="scrollHead"><p>ANIMATED HITS</p></div>
+        <div class="Main" id="animated-list"><div class="loading">Loading animation...</div></div>
+
+        <div class="scrollHead"><p>INDIAN CLASSICS</p></div>
+        <div class="Main" id="indian-list"><div class="loading">Loading Indian cinema...</div></div>
     </div>
 
-    <!-- ANIMATED HITS SECTION -->
-    <div class="scrollHead">
-        <p>ANIMATED HITS</p>
-    </div>
-    <div class="Main" id="animated-list">
-        <div class="loading">Loading animation...</div>
-    </div>
-
-    <!-- INDIAN CLASSICS SECTION -->
-    <div class="scrollHead">
-        <p>INDIAN CLASSICS</p>
-    </div>
-    <div class="Main" id="indian-list">
-        <div class="loading">Loading Indian cinema...</div>
+    <!-- EXPLORE TAB CONTENT -->
+    <div id="explore-tab" class="tab-content">
+        <input type="text" class="searchBar" placeholder="Search millions of movies..." onkeyup="globalSearch(this.value)">
+        <div class="scrollHead"><p id="explore-title">POPULAR GLOBALLY</p></div>
+        <div class="Main grid-layout" id="explore-results">
+            <!-- Results will be loaded here in a grid -->
+        </div>
     </div>
 
     <script>
@@ -64,10 +62,19 @@
       const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
       const PREFERRED_MOVIES = {
-        hollywood: [116745, 1084736, 634649, 315, 11354, 335977], // Mitty, Superman, Spiderman, Bruce, Serendipity, Minecraft
-        animated: [508439, 9502, 1374523, 569094, 324849, 38757], // Demon Slayer, Panda, Narsimha, Spiderverse, Lego Batman, Tangled
-        indian: [579047, 81839, 870357, 801688, 379291, 1040523] // RRR, Nanban, Jai Bhim, Kalki, Thozha, Maaveeran
+        hollywood: [116745, 1084736, 634649, 315, 11354, 335977],
+        animated: [508439, 9502, 1374523, 569094, 324849, 38757],
+        indian: [579047, 81839, 870357, 801688, 379291, 1040523]
       };
+
+      function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId + '-tab').classList.add('active');
+        event.currentTarget.classList.add('active');
+        
+        if (tabId === 'explore') fetchExplore('/movie/popular');
+      }
 
       async function fetchMoviesByIds(ids, containerId) {
         const container = document.getElementById(containerId);
@@ -76,7 +83,7 @@
             try {
                 const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
                 const movie = await response.json();
-                renderMovieCard(movie, container);
+                renderMovieCard(movie, container, false);
             } catch (e) { console.error(e); }
         }
       }
@@ -87,13 +94,36 @@
           const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
           const data = await response.json();
           container.innerHTML = '';
-          data.results.slice(0, 6).forEach(movie => renderMovieCard(movie, container));
+          data.results.slice(0, 6).forEach(movie => renderMovieCard(movie, container, false));
         } catch (e) { console.error(e); }
       }
 
-      function renderMovieCard(movie, container) {
+      async function fetchExplore(endpoint, title = "POPULAR GLOBALLY") {
+        const container = document.getElementById('explore-results');
+        document.getElementById('explore-title').textContent = title;
+        try {
+          const response = await fetch(`${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`);
+          const data = await response.json();
+          container.innerHTML = '';
+          data.results.forEach(movie => renderMovieCard(movie, container, true));
+        } catch (e) { console.error(e); }
+      }
+
+      let searchTimer;
+      function globalSearch(query) {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            if (query.length > 2) {
+                fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `RESULTS FOR: ${query.toUpperCase()}`);
+            } else if (query.length === 0) {
+                fetchExplore('/movie/popular');
+            }
+        }, 500);
+      }
+
+      function renderMovieCard(movie, container, isGrid) {
         container.innerHTML += `
-            <div class="MainMvContainer">
+            <div class="MainMvContainer ${isGrid ? 'grid-card' : ''}">
                 <div class="MovieContainer">
                     <img class="movieImg" src="${movie.poster_path ? IMG_PATH + movie.poster_path : 'movies/photos/logo.png'}" alt="${movie.title}">
                     <div class="movieDetails">
@@ -102,24 +132,9 @@
                         <p class="movieRating">⭐ ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}</p>
                     </div>
                 </div>
-                <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 120) + '...' : 'No description available.'}</p>
+                <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 100) + '...' : 'No description available.'}</p>
             </div>
         `;
-      }
-
-      async function searchMovies() {
-        const query = document.querySelector('.searchBar').value;
-        if (query.length > 2) {
-          document.querySelectorAll('.scrollHead p')[0].textContent = `SEARCH RESULTS: ${query.toUpperCase()}`;
-          const container = document.getElementById('trending-list');
-          const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
-          const data = await response.json();
-          container.innerHTML = '';
-          data.results.slice(0, 10).forEach(movie => renderMovieCard(movie, container));
-          document.querySelectorAll('.scrollHead, .Main').forEach((el, i) => { if(i > 1) el.style.display = 'none'; });
-        } else if (query.length === 0) {
-          location.reload();
-        }
       }
 
       window.onload = () => {
@@ -131,6 +146,31 @@
     </script>
 
     <style>
+      .tabs {
+        display: flex;
+        justify-content: center;
+        background: rgba(0,0,0,0.1);
+        padding: 10px;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .tab-btn {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .tab-btn.active {
+        background: white;
+        color: dodgerblue;
+      }
+      .tab-content { display: none; }
+      .tab-content.active { display: block; }
+
       .Main {
         display: flex;
         flex-wrap: nowrap;
@@ -139,23 +179,29 @@
         padding: 15px;
         scrollbar-width: none;
       }
-      
       .Main::-webkit-scrollbar { display: none; }
+
+      /* Grid layout for explore tab */
+      .grid-layout {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        overflow-x: hidden;
+      }
 
       .MainMvContainer {
         flex: 0 0 auto;
         background-color: rgb(178, 211, 255);
         border-radius: 10px;
-        width: 340px; /* Optimized Size */
+        width: 320px;
         display: flex;
         flex-direction: column;
         padding: 10px;
         transition: transform 0.3s ease;
       }
+      .grid-card { width: 100% !important; }
 
-      .MainMvContainer:hover {
-        transform: translateY(-5px);
-      }
+      .MainMvContainer:hover { transform: translateY(-5px); }
 
       .MovieContainer {
         display: grid;
@@ -166,50 +212,19 @@
         padding: 0.8rem;
       }
 
-      .movieImg {
-        width: 100px;
-        height: 140px;
-        object-fit: cover;
-        border-radius: 6px;
-      }
+      .movieImg { width: 100px; height: 140px; object-fit: cover; border-radius: 6px; }
 
-      .movieDetails {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
+      .movieDetails { display: flex; flex-direction: column; justify-content: flex-start; }
 
-      .movieName {
-        color: dodgerblue !important;
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-decoration: none;
-        line-height: 1.2;
-        margin-bottom: 5px;
-      }
+      .movieName { color: dodgerblue !important; font-size: 1.1rem; font-weight: bold; text-decoration: none; line-height: 1.2; margin-bottom: 5px; }
 
-      .movieGenre {
-        font-size: 0.9rem;
-        font-style: italic;
-        color: #0066cc;
-      }
+      .movieGenre { font-size: 0.9rem; font-style: italic; color: #0066cc; }
 
-      .movieRating {
-        color: #ffae00;
-        font-weight: bold;
-        margin-top: 10px;
-      }
+      .movieRating { color: #ffae00; font-weight: bold; margin-top: 10px; }
 
-      .movieDesc {
-        margin: 10px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-size: 14px;
-        font-weight: bold;
-        color: #222;
-        line-height: 1.3;
-      }
+      .movieDesc { margin: 10px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 14px; font-weight: bold; color: #222; line-height: 1.3; }
 
-      .loading { color: white; padding: 20px; }
+      .loading { color: white; padding: 20px; text-align: center; width: 100%; }
     </style>
 
 
