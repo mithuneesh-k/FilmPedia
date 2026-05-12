@@ -14,17 +14,42 @@ body {
 
 /* Header & Footer */
 .Header {
-    background-color: var(--primary-blue);
+    background: linear-gradient(160deg, #0078ee 0%, var(--primary-blue) 60%, #5ab4ff 100%);
     color: white;
-    padding: 20px 40px;
+    padding: 48px 40px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(255,255,255,0.3);
+    border-bottom: 4px solid rgba(255,255,255,0.25);
+    position: relative;
+}
+.Header::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
 }
 .HeaderContent { text-align: center; flex-grow: 1; }
-.Title { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 0; }
-.Desc { margin: 2px 0 0; font-size: 14px; font-weight: 400; opacity: 0.9; }
+.Title {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin: 0;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+.Desc {
+    margin: 10px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
 
 .loginIcon { 
     font-size: 32px;
@@ -90,6 +115,8 @@ body {
 }
 .movieGenre { font-size: 13px; color: #666; font-style: italic; }
 .movieRating { font-size: 16px; color: #ffae00; font-weight: 900; }
+.movieDesc { font-size: 14px; margin: 15px 5px 0; color: #111; line-height: 1.4; font-weight: 700; }
+
 /* Auth Pages */
 .LoginWrapper { display: flex; justify-content: center; align-items: center; min-height: 70vh; padding: 20px; }
 .LoginCard { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
