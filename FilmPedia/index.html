@@ -9,37 +9,36 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
       :root {
-        --md-sys-color-primary: #1e90ff; /* DodgerBlue */
-        --md-sys-color-on-primary: #ffffff;
-        --md-sys-color-primary-container: #1e90ff; /* Solid DodgerBlue */
-        --md-sys-color-on-primary-container: #ffffff;
-        --md-sys-color-surface: #ffffff; /* Pure White */
-        --md-sys-color-surface-container: #f0f7ff;
-        --md-sys-color-outline: #1e90ff;
+        --primary-blue: #1e90ff; /* DodgerBlue */
+        --light-blue-card: rgb(178, 211, 255); /* Your preferred card color */
+        --text-dark: #222222;
+        --rating-gold: #ffae00;
+        --bg-white: #ffffff;
       }
 
       body {
         font-family: 'Roboto', sans-serif;
         margin: 0;
-        background-color: var(--md-sys-color-surface);
-        color: #222;
+        background-color: var(--primary-blue); /* Solid blue background like original */
+        color: var(--text-dark);
       }
 
       /* Header Style */
       .Header {
-        background-color: var(--md-sys-color-primary);
+        background-color: var(--primary-blue);
         color: white;
         padding: 40px 20px;
         text-align: center;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 2px solid white;
       }
-      .Title { font-size: 36px; font-weight: 700; letter-spacing: 2px; margin: 0; }
-      .Desc { margin: 8px 0 0; font-size: 18px; opacity: 0.9; }
+      .Title { font-size: 38px; font-weight: 900; letter-spacing: 4px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+      .Desc { margin: 10px 0 0; font-size: 20px; font-weight: 500; }
       
       .loginIcon { 
-        font-size: 40px;
+        font-size: 45px;
         color: white;
         cursor: pointer;
         transition: transform 0.2s;
@@ -49,116 +48,123 @@
       }
       .loginIcon:hover { transform: scale(1.1); }
 
-      /* Material Tabs */
+      /* Tabs Navigation */
       .tabs {
         display: flex;
         justify-content: center;
-        background: white;
-        padding: 12px;
-        gap: 10px;
+        background: #0073e6; /* Darker blue for contrast */
+        padding: 15px;
+        gap: 15px;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border-bottom: 2px solid var(--md-sys-color-primary);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       }
       .tab-btn {
         background: white;
-        border: 2px solid var(--md-sys-color-primary);
-        padding: 10px 24px;
-        font-size: 14px;
-        font-weight: 700;
+        border: none;
+        padding: 12px 30px;
+        font-size: 15px;
+        font-weight: 900;
         cursor: pointer;
-        border-radius: 25px;
-        color: var(--md-sys-color-primary);
+        border-radius: 30px;
+        color: var(--primary-blue);
         transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }
       .tab-btn.active {
-        background: var(--md-sys-color-primary);
-        color: white;
+        background: var(--light-blue-card);
+        color: #004a99;
+        transform: scale(1.05);
       }
 
-      .tab-content { display: none; padding: 20px; }
+      .tab-content { display: none; padding: 20px 0; }
       .tab-content.active { display: block; }
 
       /* Section Headers */
       .scrollHead {
         font-size: 24px;
-        font-weight: 700;
-        color: var(--md-sys-color-primary);
-        margin: 20px 10px 10px;
-        padding-left: 15px;
-        border-left: 5px solid var(--md-sys-color-primary);
+        font-weight: 900;
+        color: white;
+        margin: 20px 20px 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
       /* Horizontal Lists */
       .Main {
         display: flex;
         overflow-x: auto;
-        gap: 16px;
-        padding: 16px 10px;
-        background-color: var(--md-sys-color-primary);
-        margin: 0 10px 20px;
-        border-radius: 20px;
+        gap: 20px;
+        padding: 20px;
+        background-color: var(--primary-blue);
+        scrollbar-width: thin;
+        scrollbar-color: white var(--primary-blue);
       }
-      .Main::-webkit-scrollbar { height: 6px; }
+      .Main::-webkit-scrollbar { height: 8px; }
       .Main::-webkit-scrollbar-thumb { background: white; border-radius: 10px; }
 
-      /* Movie Cards */
+      /* Movie Cards - YOUR PREFERRED LOOK */
       .MainMvContainer {
         flex: 0 0 auto;
-        background: var(--md-sys-color-primary); /* DodgerBlue */
-        width: 340px;
+        background: var(--light-blue-card); /* Light Blue Card Body */
+        width: 360px;
         padding: 15px;
-        border-radius: 24px;
+        border-radius: 15px;
         display: flex;
         flex-direction: column;
-        border: 2px solid white;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         transition: transform 0.3s ease;
       }
-      .MainMvContainer:hover { transform: scale(1.02); }
+      .MainMvContainer:hover { transform: translateY(-5px); }
 
       .MovieContainer {
         display: flex;
-        background: white;
-        padding: 12px;
-        border-radius: 16px;
-        gap: 16px;
+        background: var(--bg-white); /* White Inner Box */
+        padding: 15px;
+        border-radius: 10px;
+        gap: 15px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
       }
-      .movieImg { width: 110px; height: 160px; border-radius: 12px; object-fit: cover; }
-      .movieDetails { display: flex; flex-direction: column; justify-content: center; }
+      .movieImg { width: 100px; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+      .movieDetails { display: flex; flex-direction: column; justify-content: flex-start; }
       
       .movieName {
-        color: var(--md-sys-color-primary);
-        font-size: 18px;
-        font-weight: 700;
+        color: var(--primary-blue);
+        font-size: 20px;
+        font-weight: 900;
         text-decoration: none;
         margin-bottom: 8px;
+        line-height: 1.2;
       }
-      .movieGenre { font-size: 14px; color: #555; margin-bottom: 8px; }
-      .movieRating { font-size: 16px; color: #f39c12; font-weight: 700; }
+      .movieName:hover { text-decoration: underline; }
+      
+      .movieGenre { font-size: 14px; font-weight: 500; color: #0066cc; margin-bottom: 10px; font-style: italic; }
+      .movieRating { font-size: 17px; color: var(--rating-gold); font-weight: 900; }
 
       .movieDesc {
-        font-size: 14px;
+        font-size: 15px;
         margin: 15px 5px 5px;
-        color: white; /* White text on blue card */
+        color: #1a1a1a; /* Bold Dark Text on Light Blue */
         line-height: 1.5;
-        font-weight: 500;
+        font-weight: 700;
+        font-family: 'Cambria', serif;
       }
 
       /* Search Bar */
-      .search-container { max-width: 700px; margin: 20px auto; padding: 0 20px; }
+      .search-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
       .searchBar {
         width: 100%;
-        padding: 16px 24px;
-        border-radius: 30px;
-        border: 2px solid var(--md-sys-color-primary);
+        padding: 18px 30px;
+        border-radius: 50px;
+        border: 4px solid var(--light-blue-card);
         background: white;
-        font-size: 16px;
+        font-size: 18px;
         outline: none;
         box-sizing: border-box;
-        color: var(--md-sys-color-primary);
-        font-weight: bold;
+        color: var(--primary-blue);
+        font-weight: 900;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
       .searchBar:focus {
         border: 2px solid var(--md-sys-color-primary);
