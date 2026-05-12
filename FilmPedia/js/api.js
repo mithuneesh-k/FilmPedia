@@ -4,13 +4,13 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
 const PREFERRED = {
     //  Walter Mitty | Superman 2025 | Spider-Man NWH | Bruce Almighty | Back to the Future | The Greatest Showman
-    hollywood: [116745, 1061474, 634649, 310, 105, 396535],
+    hollywood: [116745, 1061474, 634649, 310, 105, 316029],
 
-    //  Demon Slayer Infinity Castle | Kung Fu Panda | LEGO Batman | Tangled | Fantastic Mr. Fox | Mahavatar Narshima
-    animated: [1311031, 9502, 324849, 38757, 10315, 1374523],
+    //  Demon Slayer Infinity Castle | Kung Fu Panda | LEGO Batman | Tangled | Fantastic Mr. Fox | Mahavatar Narsimha
+    animated: [1311031, 9502, 324849, 38757, 10315, 1383072],
 
-    //  RRR | Jai Bhim | Thozha/Oopiri | Kalki 2898 AD | Sitaare Zameen Par
-    indian: [579974, 855400, 369925, 801688, 1190511]
+    //  RRR | Jai Bhim | Thozha/Oopiri | Kalki 2898 AD | Sitaare Zameen Par | Nanban
+    indian: [579974, 855400, 369925, 801688, 1190511, 69537]
 };
 
 async function fetchMovies(endpoint) {
@@ -30,7 +30,7 @@ async function fetchMovieById(id) {
 function renderMovieCard(movie, container, basePath = '') {
     const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
     const poster = movie.poster_path ? IMG_PATH + movie.poster_path : `${basePath}movies/photos/logo.png`;
-    
+
     const card = `
         <div class="MainMvContainer">
             <div class="MovieContainer">
