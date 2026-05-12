@@ -125,7 +125,7 @@ body {
 .movieGenre { font-size: 13px; color: #666; font-style: italic; }
 .movieRating { font-size: 16px; color: #ffae00; font-weight: 900; }
 .movieDesc { font-size: 14px; margin: 12px 5px 0; color: #111; line-height: 1.45; font-weight: 700;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Grid layout for Explore tab */
 .grid-layout .MainMvContainer {
@@ -133,7 +133,7 @@ body {
     box-sizing: border-box;
     height: 100%;
 }
-.grid-layout .movieDesc { -webkit-line-clamp: 2; }
+.grid-layout .movieDesc { -webkit-line-clamp: 2; line-clamp: 2; }
 
 /* Auth Pages */
 .LoginWrapper { display: flex; justify-content: center; align-items: center; min-height: 70vh; padding: 20px; }
