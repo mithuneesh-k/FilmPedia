@@ -4,108 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">FilmPedia - Movie Details</title>
-    <link rel="stylesheet" href="movieStyle.css">
     <link rel="icon" type="image/png" href="photos/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1e90ff;
-            color: #222;
-            margin: 0;
-        }
-        .Header {
-            background-color: #1e90ff;
-            color: white;
-            padding: 20px 40px;
-            text-align: center;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-        }
-        .Title { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 0; }
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
-        }
-        .error-container {
-            text-align: center;
-            padding: 50px;
-            color: white;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: white;
-            color: #1e90ff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
+        .back-btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background: white; color: #1e90ff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.2s; }
         .back-btn:hover { background: #f0f0f0; transform: scale(1.05); }
-
-        .section {
-            background: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+        .section { background: white; margin: 20px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .section h2 { color: #1e90ff; margin-top: 0; }
-        
-        .MainMvContainer {
-            background: rgb(178, 211, 255);
-            margin: 20px;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .MovieContainer {
-            display: flex;
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
-            gap: 20px;
-        }
-        .movieImg { width: 150px; border-radius: 10px; }
-        .movieName { font-size: 24px; font-weight: 900; color: #1e90ff; }
-        .movieGenre { color: #666; font-style: italic; }
-        .movieRating { font-size: 18px; color: #ffae00; font-weight: 900; }
-        .movieDesc { font-weight: 700; margin-top: 20px; color: #111; }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px;
-            background: #0078ee;
-            margin: 0;
-            list-style: none;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: 0.2s;
-        }
+        nav ul { display: flex; justify-content: center; gap: 20px; padding: 15px; background: #0078ee; margin: 0; list-style: none; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; padding: 8px 15px; border-radius: 20px; transition: 0.2s; }
         nav ul li a:hover { background: rgba(255,255,255,0.2); }
-
-        .Footer {
-            text-align: center;
-            padding: 30px;
-            color: white;
-            font-weight: 700;
-        }
     </style>
 </head>
 <body> 
     <div class="Header">
-        <h1 class="Title"><a href="../index.html" style="color: inherit; text-decoration: none;">FILMPEDIA</a></h1>
-        <p style="margin: 2px 0 0; font-size: 14px; opacity: 0.9;">A Movie Guide</p>
+        <div style="width: 32px;"></div>
+        <div class="HeaderContent">
+            <h1 class="Title"><a href="../index.html" style="color: inherit; text-decoration: none;">FILMPEDIA</a></h1>
+            <p class="Desc">A Movie Guide</p>
+        </div>
+        <div style="width: 32px;"></div>
     </div>
 
     <div id="content">
@@ -116,11 +35,8 @@
         <p>© 2025 FilmPedia. Created by Mithuneesh. K</p>
     </div>
 
+    <script src="../js/api.js"></script>
     <script>
-        const API_KEY = '495352769dbc05d7c88f80f7499e823e';
-        const BASE_URL = 'https://api.themoviedb.org/3';
-        const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
-
         async function loadMovieDetails() {
             const urlParams = new URLSearchParams(window.location.search);
             const tmdbId = urlParams.get('tmdbId');
@@ -131,91 +47,72 @@
                 return;
             }
 
-            try {
-                const response = await fetch(`${BASE_URL}/movie/${tmdbId}?api_key=${API_KEY}&append_to_response=credits,videos`);
-                const data = await response.json();
-                
-                if (data.status_code === 34) {
-                    showError("Movie not found.");
-                    return;
-                }
-
-                const movie = {
-                    title: data.title,
-                    image: data.poster_path ? IMG_PATH + data.poster_path : '../movies/photos/logo.png',
-                    genre: data.genres.map(g => g.name).join(' • '),
-                    rating: `⭐ ${data.vote_average.toFixed(1)}`,
-                    description: data.overview,
-                    trailerUrl: data.videos.results.find(v => v.type === 'Trailer')?.key ? `https://www.youtube.com/watch?v=${data.videos.results.find(v => v.type === 'Trailer').key}` : '',
-                    cast: data.credits.cast.slice(0, 10).map(c => `${c.name} as ${c.character}`),
-                    crew: data.credits.crew.filter(c => c.job === 'Director' || c.job === 'Producer').slice(0, 3).map(c => `${c.job}: ${c.name}`),
-                    story: data.overview,
-                    watchersGuide: [`Runtime: ${data.runtime} min`, `Status: ${data.status}`, `Released: ${data.release_date}`]
-                };
-
-                document.title = movie.title;
-
-                let html = `
-                    <div id="moviePoint" class="MainMvContainer">
-                        <div class="MovieContainer">
-                            <img class="movieImg" src="${movie.image}" alt="${movie.title}">
-                            <div class="movieDetails">
-                                <span class="movieName">${movie.title}</span>
-                                <p class="movieGenre">${movie.genre}</p>
-                                <p class="movieRating">${movie.rating}</p>
-                            </div>
-                        </div>
-                        <p class="movieDesc">${movie.description}</p>
-                    </div>
-
-                    <nav>
-                        <ul>
-                            <li><a href="#moviePoint">Film</a></li>
-                            <li><a href="#castCrew">Cast & Crew</a></li>
-                            <li><a href="#story">Story</a></li>
-                        </ul>
-                    </nav>
-
-                    <div class="section">
-                        <h2>Trailer</h2>
-                        ${movie.trailerUrl ? 
-                            `<a href="${movie.trailerUrl}" target="_blank" class="back-btn" style="background: #1e90ff; color: white;">Watch the Official Trailer</a>` : 
-                            `<p>Trailer not available.</p>`
-                        }
-                    </div>
-
-                    <div id="castCrew" class="section">
-                        <h2>Cast & Crew</h2>
-                        <ul style="list-style: none; padding: 0;">
-                            ${movie.cast.map(c => `<li style="margin-bottom: 8px;"><strong>${c.split(' as ')[0]}</strong> ${c.includes(' as ') ? 'as ' + c.split(' as ')[1] : ''}</li>`).join('')}
-                            ${movie.crew.map(c => `<li style="margin-bottom: 8px; font-style: italic;">${c}</li>`).join('')}
-                        </ul>
-                    </div>
-
-                    <div id="story" class="section">
-                        <h2>Story</h2>
-                        <p style="font-weight: 500; line-height: 1.6;">${movie.story}</p>
-                    </div>
-
-                    <div class="section">
-                        <h2>Watcher's Guide</h2>
-                        <ul style="list-style: none; padding: 0;">
-                            ${movie.watchersGuide.map(w => `<li style="margin-bottom: 8px;">${w}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-
-                contentDiv.innerHTML = html;
-
-            } catch (error) {
-                console.error("Error:", error);
-                showError("Failed to load movie details.");
+            const data = await fetchMovieById(tmdbId);
+            if (!data || data.status_code === 34) {
+                showError("Movie not found.");
+                return;
             }
+
+            const movie = {
+                title: data.title,
+                image: data.poster_path ? IMG_PATH + data.poster_path : 'photos/logo.png',
+                genre: data.genres.map(g => g.name).join(' • '),
+                rating: `⭐ ${data.vote_average.toFixed(1)}`,
+                description: data.overview,
+                trailerUrl: data.videos.results.find(v => v.type === 'Trailer')?.key ? `https://www.youtube.com/watch?v=${data.videos.results.find(v => v.type === 'Trailer').key}` : '',
+                cast: data.credits.cast.slice(0, 10).map(c => `${c.name} as ${c.character}`),
+                crew: data.credits.crew.filter(c => c.job === 'Director' || c.job === 'Producer').slice(0, 3).map(c => `${c.job}: ${c.name}`),
+                watchersGuide: [`Runtime: ${data.runtime} min`, `Status: ${data.status}`, `Released: ${data.release_date}`]
+            };
+
+            document.title = movie.title;
+
+            contentDiv.innerHTML = `
+                <div id="moviePoint" class="MainMvContainer" style="margin: 20px; width: auto;">
+                    <div class="MovieContainer">
+                        <img class="movieImg" src="${movie.image}" alt="${movie.title}" style="width: 150px; height: auto;">
+                        <div class="movieDetails">
+                            <span class="movieName" style="font-size: 24px;">${movie.title}</span>
+                            <p class="movieGenre">${movie.genre}</p>
+                            <p class="movieRating">${movie.rating}</p>
+                        </div>
+                    </div>
+                    <p class="movieDesc" style="margin-top: 20px;">${movie.description}</p>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="#moviePoint">Film</a></li>
+                        <li><a href="#castCrew">Cast & Crew</a></li>
+                        <li><a href="#watchersGuide">Details</a></li>
+                    </ul>
+                </nav>
+
+                <div class="section">
+                    <h2>Trailer</h2>
+                    ${movie.trailerUrl ? `<a href="${movie.trailerUrl}" target="_blank" class="back-btn" style="background: #1e90ff; color: white;">Watch Trailer</a>` : `<p>No trailer available.</p>`}
+                </div>
+
+                <div id="castCrew" class="section">
+                    <h2>Cast & Crew</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        ${movie.cast.map(c => `<li style="margin-bottom: 8px;"><strong>${c.split(' as ')[0]}</strong> ${c.includes(' as ') ? 'as ' + c.split(' as ')[1] : ''}</li>`).join('')}
+                        ${movie.crew.map(c => `<li style="margin-bottom: 8px; font-style: italic;">${c}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div id="watchersGuide" class="section">
+                    <h2>Watcher's Guide</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        ${movie.watchersGuide.map(w => `<li style="margin-bottom: 8px;">${w}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
         }
 
         function showError(message) {
             document.getElementById('content').innerHTML = `
-                <div class="error-container">
+                <div style="text-align: center; padding: 50px; color: white;">
                     <h2>Oops!</h2>
                     <p>${message}</p>
                     <a href="../index.html" class="back-btn">Back to Home</a>

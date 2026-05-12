@@ -7,164 +7,17 @@
     <link rel="icon" type="image/png" href="movies/photos/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-      :root {
-        --primary-blue: #1e90ff; /* DodgerBlue */
-        --card-bg: rgb(178, 211, 255);
-        --white: #ffffff;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        background-color: var(--primary-blue);
-        color: #222;
-      }
-
-      /* Clean Sleek Header */
-      .Header {
-        background-color: var(--primary-blue);
-        color: white;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid rgba(255,255,255,0.3);
-      }
-      .HeaderContent { text-align: center; flex-grow: 1; }
-      .Title { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 0; }
-      .Desc { margin: 2px 0 0; font-size: 14px; font-weight: 400; opacity: 0.9; }
-      
-      .loginIcon { 
-        font-size: 32px;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.2s, opacity 0.2s;
-        text-decoration: none;
-      }
-      .loginIcon:hover { transform: scale(1.1); opacity: 0.8; }
-
-      /* Professional Tabs */
-      .tabs {
-        display: flex;
-        justify-content: center;
-        background: #0078ee; /* Slightly darker blue */
-        padding: 10px;
-        gap: 10px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      .tab-btn {
-        background: white;
-        border: none;
-        padding: 10px 25px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        border-radius: 50px;
-        color: var(--primary-blue);
-        transition: all 0.2s;
-      }
-      .tab-btn.active {
-        background: var(--card-bg);
-        color: #004a99;
-      }
-      .tab-btn:hover:not(.active) { background: #f0f0f0; }
-
+      /* Tab and Search Specific Styles */
+      .tabs { display: flex; justify-content: center; background: #0078ee; padding: 10px; gap: 10px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      .tab-btn { background: white; border: none; padding: 10px 25px; font-size: 14px; font-weight: 700; cursor: pointer; border-radius: 50px; color: var(--primary-blue); transition: all 0.2s; }
+      .tab-btn.active { background: var(--card-bg); color: #004a99; }
       .tab-content { display: none; padding: 20px 0; }
       .tab-content.active { display: block; }
-
-      .scrollHead {
-        font-size: 22px;
-        font-weight: 900;
-        color: white;
-        margin: 20px 30px 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      /* Horizontal Lists */
-      .Main {
-        display: flex;
-        overflow-x: auto;
-        gap: 20px;
-        padding: 20px 30px;
-        scrollbar-width: thin;
-        scrollbar-color: white var(--primary-blue);
-      }
-      .Main::-webkit-scrollbar { height: 6px; }
-      .Main::-webkit-scrollbar-thumb { background: white; border-radius: 10px; }
-
-      /* Movie Cards */
-      .MainMvContainer {
-        flex: 0 0 auto;
-        background: var(--card-bg);
-        width: 350px;
-        padding: 15px;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      }
-      .MovieContainer {
-        display: flex;
-        background: white;
-        padding: 12px;
-        border-radius: 15px;
-        gap: 15px;
-      }
-      .movieImg { width: 100px; height: 150px; border-radius: 10px; object-fit: cover; }
-      .movieDetails { display: flex; flex-direction: column; justify-content: center; }
-      
-      .movieName {
-        color: var(--primary-blue);
-        font-size: 18px;
-        font-weight: 700;
-        text-decoration: none;
-        margin-bottom: 5px;
-        line-height: 1.2;
-      }
-      .movieGenre { font-size: 13px; color: #666; margin-bottom: 8px; font-style: italic; }
-      .movieRating { font-size: 16px; color: #ffae00; font-weight: 900; }
-
-      .movieDesc {
-        font-size: 14px;
-        margin: 15px 5px 0;
-        color: #111;
-        line-height: 1.4;
-        font-weight: 700;
-      }
-
-      /* Global Search Layout */
       .search-container { max-width: 600px; margin: 20px auto; padding: 0 20px; }
-      .searchBar {
-        width: 100%;
-        padding: 14px 25px;
-        border-radius: 50px;
-        border: 3px solid var(--card-bg);
-        background: white;
-        font-size: 16px;
-        outline: none;
-        color: var(--primary-blue);
-        font-weight: 700;
-      }
-      .grid-layout {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 20px;
-        padding: 20px 30px;
-      }
-
-      .Footer {
-        text-align: center;
-        padding: 30px;
-        color: white;
-        font-weight: 700;
-        opacity: 0.9;
-      }
-      .loading { text-align: center; width: 100%; padding: 40px; color: white; font-weight: 700; }
+      .searchBar { width: 100%; padding: 14px 25px; border-radius: 50px; border: 3px solid var(--card-bg); background: white; font-size: 16px; outline: none; color: var(--primary-blue); font-weight: 700; }
+      .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; padding: 20px 30px; }
     </style>
 </head>
 <body>
@@ -186,16 +39,16 @@
     <!-- HOME TAB -->
     <div id="home-tab" class="tab-content active">
         <div class="scrollHead">Trending This Week</div>
-        <div class="Main" id="trending-list"><div class="loading">Fetching trends...</div></div>
+        <div class="Main" id="trending-list"></div>
 
         <div class="scrollHead">Hollywood Hits</div>
-        <div class="Main" id="hollywood-list"><div class="loading">Loading favorites...</div></div>
+        <div class="Main" id="hollywood-list"></div>
 
         <div class="scrollHead">Animated Hits</div>
-        <div class="Main" id="animated-list"><div class="loading">Loading movies...</div></div>
+        <div class="Main" id="animated-list"></div>
 
         <div class="scrollHead">Indian Classics</div>
-        <div class="Main" id="indian-list"><div class="loading">Loading classics...</div></div>
+        <div class="Main" id="indian-list"></div>
     </div>
 
     <!-- EXPLORE TAB -->
@@ -211,92 +64,56 @@
         <p>© 2025 FilmPedia. Created by Mithuneesh. K</p>
     </div>
 
+    <script src="js/api.js"></script>
     <script>
-      const API_KEY = '495352769dbc05d7c88f80f7499e823e';
-      const BASE_URL = 'https://api.themoviedb.org/3';
-      const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
-
-      const PREFERRED = {
-        hollywood: [116745, 1084736, 634649, 315, 11354, 335977],
-        animated: [508439, 9502, 1374523, 569094, 324849, 38757],
-        indian: [579047, 81839, 870357, 801688, 379291, 1040523]
-      };
-
       function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId + '-tab').classList.add('active');
         event.currentTarget.classList.add('active');
-        if (tabId === 'explore') fetchExplore('/movie/popular');
-      }
-
-      async function fetchMoviesByIds(ids, containerId) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = '';
-        for (const id of ids) {
-          try {
-            const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-            const movie = await response.json();
-            renderCard(movie, container);
-          } catch (e) { console.log(e); }
+        if (tabId === 'explore' && !document.getElementById('explore-results').innerHTML) {
+          fetchExplore('/movie/popular');
         }
       }
 
       async function fetchTrending() {
+        const data = await fetchMovies('/trending/movie/week');
         const container = document.getElementById('trending-list');
-        try {
-          const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
-          const data = await response.json();
-          container.innerHTML = '';
-          data.results.slice(0, 6).forEach(m => renderCard(m, container));
-        } catch (e) { console.log(e); }
+        if (data) data.results.slice(0, 6).forEach(m => renderMovieCard(m, container));
+      }
+
+      async function fetchCurated(ids, containerId) {
+        const container = document.getElementById(containerId);
+        for (const id of ids) {
+          const movie = await fetchMovieById(id);
+          if (movie) renderMovieCard(movie, container);
+        }
       }
 
       async function fetchExplore(endpoint, title = "Popular Globally") {
         const container = document.getElementById('explore-results');
         document.getElementById('explore-title').innerText = title;
-        try {
-          const response = await fetch(`${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`);
-          const data = await response.json();
+        const data = await fetchMovies(endpoint);
+        if (data) {
           container.innerHTML = '';
-          data.results.forEach(m => renderCard(m, container));
-        } catch (e) { console.log(e); }
+          data.results.forEach(m => renderMovieCard(m, container));
+        }
       }
 
       let searchTimer;
       function globalSearch(query) {
         clearTimeout(searchTimer);
         searchTimer = setTimeout(() => {
-          if (query.length > 2) {
-            fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `Results for: ${query}`);
-          } else if (query.length === 0) {
-            fetchExplore('/movie/popular');
-          }
+          if (query.length > 2) fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `Results for: ${query}`);
+          else if (query.length === 0) fetchExplore('/movie/popular');
         }, 300);
-      }
-
-      function renderCard(movie, container) {
-        const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
-        container.innerHTML += `
-          <div class="MainMvContainer">
-            <div class="MovieContainer">
-              <img class="movieImg" src="${movie.poster_path ? IMG_PATH + movie.poster_path : 'movies/photos/logo.png'}">
-              <div class="movieDetails">
-                <a href="movies/movie-details.html?tmdbId=${movie.id}" class="movieName">${movie.title}</a>
-                <p class="movieGenre">${year}</p>
-                <p class="movieRating">⭐ ${movie.vote_average.toFixed(1)}</p>
-              </div>
-            </div>
-            <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 110) + '...' : 'No description available.'}</p>
-          </div>
-        `;
       }
 
       window.onload = () => {
         fetchTrending();
-        fetchMoviesByIds(PREFERRED.hollywood, 'hollywood-list');
-        fetchMoviesByIds(PREFERRED.animated, 'animated-list');
-        fetchMoviesByIds(PREFERRED.indian, 'indian-list');
+        fetchCurated(PREFERRED.hollywood, 'hollywood-list');
+        fetchCurated(PREFERRED.animated, 'animated-list');
+        fetchCurated(PREFERRED.indian, 'indian-list');
       };
     </script>
 </body>

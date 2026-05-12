@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Movie Central</title>
-    <link rel="stylesheet" href="testing.css">
-    <link rel="icon" type="image/png" href="photos/logo.png">
+    <title>Register - FilmPedia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="movies/photos/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="Header">
-        <h1 class="Title">JOIN THE CLUB</h1>
-        <p class="Desc">Create an account to start reviewing movies</p>
-    </header>
+    <div class="Header">
+        <div style="width: 32px;"></div>
+        <div class="HeaderContent">
+            <h1 class="Title">FILMPEDIA</h1>
+            <p class="Desc">Join the Movie Guide</p>
+        </div>
+        <div style="width: 32px;"></div>
+    </div>
 
     <div class="LoginWrapper">
-        <div class="LoginCard RegisterCard">
-            <h2 class="LoginTitle">Create Account</h2>
-            <form action="#">
+        <div class="LoginCard">
+            <h2 class="LoginTitle">Register</h2>
+            <form action="login.html">
                 <div class="InputGroup">
                     <label for="fullname">Full Name</label>
                     <input type="text" id="fullname" class="LoginInput" placeholder="John Doe" required>
@@ -33,16 +38,6 @@
                     <input type="password" id="password" class="LoginInput" placeholder="Create a password" required>
                 </div>
 
-                <div class="InputGroup">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" class="LoginInput" placeholder="Repeat your password" required>
-                </div>
-
-                <div class="CheckboxGroup">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I agree to the <a href="#">Terms of Service</a></label>
-                </div>
-
                 <button type="submit" class="LoginButton">Create Account</button>
             </form>
             <div class="LoginFooter">
@@ -51,10 +46,9 @@
         </div>
     </div>
 
-    <footer class="Footer">
-        <p class="FooterText">&copy; 2025 Movie Central. All rights reserved.</p>
-    </footer>
+    <div class="Footer">
+        <p>© 2025 FilmPedia. Created by Mithuneesh. K</p>
+    </div>
 
 </body>
-
 </html>
