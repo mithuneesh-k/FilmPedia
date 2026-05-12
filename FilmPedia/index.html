@@ -3,57 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmPedia</title>
-    <link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/png" href="movies/photos/logo.png">
+    <title>FilmPedia - Movie Guide</title>
+    <link rel="icon" type="image/png" href="movies/photos/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      :root {
+        --md-sys-color-primary: #1e90ff; /* DodgerBlue */
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #1e90ff; /* Solid DodgerBlue */
+        --md-sys-color-on-primary-container: #ffffff;
+        --md-sys-color-surface: #ffffff; /* Pure White */
+        --md-sys-color-surface-container: #f0f7ff;
+        --md-sys-color-outline: #1e90ff;
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        background-color: var(--md-sys-color-surface);
+        color: #222;
+      }
+
+      /* Header Style */
+      .Header {
+        background-color: var(--md-sys-color-primary);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .Title { font-size: 36px; font-weight: 700; letter-spacing: 2px; margin: 0; }
+      .Desc { margin: 8px 0 0; font-size: 18px; opacity: 0.9; }
+      
+      .loginIcon { 
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loginIcon:hover { transform: scale(1.1); }
+
+      /* Material Tabs */
+      .tabs {
+        display: flex;
+        justify-content: center;
+        background: white;
+        padding: 12px;
+        gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-bottom: 2px solid var(--md-sys-color-primary);
+      }
+      .tab-btn {
+        background: white;
+        border: 2px solid var(--md-sys-color-primary);
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        border-radius: 25px;
+        color: var(--md-sys-color-primary);
+        transition: all 0.2s ease;
+      }
+      .tab-btn.active {
+        background: var(--md-sys-color-primary);
+        color: white;
+      }
+
+      .tab-content { display: none; padding: 20px; }
+      .tab-content.active { display: block; }
+
+      /* Section Headers */
+      .scrollHead {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--md-sys-color-primary);
+        margin: 20px 10px 10px;
+        padding-left: 15px;
+        border-left: 5px solid var(--md-sys-color-primary);
+      }
+
+      /* Horizontal Lists */
+      .Main {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding: 16px 10px;
+        background-color: var(--md-sys-color-primary);
+        margin: 0 10px 20px;
+        border-radius: 20px;
+      }
+      .Main::-webkit-scrollbar { height: 6px; }
+      .Main::-webkit-scrollbar-thumb { background: white; border-radius: 10px; }
+
+      /* Movie Cards */
+      .MainMvContainer {
+        flex: 0 0 auto;
+        background: var(--md-sys-color-primary); /* DodgerBlue */
+        width: 340px;
+        padding: 15px;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid white;
+        transition: transform 0.3s ease;
+      }
+      .MainMvContainer:hover { transform: scale(1.02); }
+
+      .MovieContainer {
+        display: flex;
+        background: white;
+        padding: 12px;
+        border-radius: 16px;
+        gap: 16px;
+      }
+      .movieImg { width: 110px; height: 160px; border-radius: 12px; object-fit: cover; }
+      .movieDetails { display: flex; flex-direction: column; justify-content: center; }
+      
+      .movieName {
+        color: var(--md-sys-color-primary);
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+      .movieGenre { font-size: 14px; color: #555; margin-bottom: 8px; }
+      .movieRating { font-size: 16px; color: #f39c12; font-weight: 700; }
+
+      .movieDesc {
+        font-size: 14px;
+        margin: 15px 5px 5px;
+        color: white; /* White text on blue card */
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      /* Search Bar */
+      .search-container { max-width: 700px; margin: 20px auto; padding: 0 20px; }
+      .searchBar {
+        width: 100%;
+        padding: 16px 24px;
+        border-radius: 30px;
+        border: 2px solid var(--md-sys-color-primary);
+        background: white;
+        font-size: 16px;
+        outline: none;
+        box-sizing: border-box;
+        color: var(--md-sys-color-primary);
+        font-weight: bold;
+      }
+      .searchBar:focus {
+        border: 2px solid var(--md-sys-color-primary);
+      }
+
+      /* Grid for Global Search */
+      .grid-layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .Footer {
+        text-align: center;
+        padding: 40px 20px;
+        background: var(--md-sys-color-surface-container);
+        color: var(--md-sys-color-primary);
+        border-top: 1px solid rgba(0,0,0,0.1);
+        margin-top: 40px;
+      }
+      .loading { text-align: center; width: 100%; padding: 40px; color: var(--md-sys-color-primary); }
+    </style>
 </head>
 <body>
-   <div class="Header">
-        <div style="width: 50px;"></div> 
 
-        <div class="HeaderContent">
-            <h1 class="Title">F I L M P E D I A</h1>
-            <h3 class="Desc">A Movie Guide</h3>
-            
+    <div class="Header">
+        <div style="width: 48px;"></div>
+        <div>
+            <h1 class="Title">FILMPEDIA</h1>
+            <p class="Desc">A Movie Guide</p>
         </div>
-
-        <div class="HeaderLogin">
-            <a href="login.html">
-                <img src="movies/photos/login.png" alt="Login" class="loginIcon">
-            </a>
-        </div>
+        <a href="login.html"><span class="material-icons loginIcon">account_circle</span></a>
     </div>
-    <input type="text" class="searchBar" placeholder="Search for movies..." onkeyup="searchMovies()">
 
-
-    <!-- TAB NAVIGATION -->
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('home')">HOME</button>
         <button class="tab-btn" onclick="switchTab('explore')">GLOBAL SEARCH</button>
     </div>
 
-    <!-- HOME TAB CONTENT -->
+    <!-- HOME TAB -->
     <div id="home-tab" class="tab-content active">
-        <div class="scrollHead"><p>TRENDING MOVIES</p></div>
-        <div class="Main" id="trending-list"><div class="loading">Discovering trends...</div></div>
+        <div class="scrollHead">Trending Now</div>
+        <div class="Main" id="trending-list"><div class="loading">Loading movies...</div></div>
 
-        <div class="scrollHead"><p>HOLLYWOOD HITS</p></div>
-        <div class="Main" id="hollywood-list"><div class="loading">Loading Hollywood...</div></div>
+        <div class="scrollHead">Hollywood Favorites</div>
+        <div class="Main" id="hollywood-list"><div class="loading">Loading movies...</div></div>
 
-        <div class="scrollHead"><p>ANIMATED HITS</p></div>
-        <div class="Main" id="animated-list"><div class="loading">Loading animation...</div></div>
+        <div class="scrollHead">Animated Hits</div>
+        <div class="Main" id="animated-list"><div class="loading">Loading movies...</div></div>
 
-        <div class="scrollHead"><p>INDIAN CLASSICS</p></div>
-        <div class="Main" id="indian-list"><div class="loading">Loading Indian cinema...</div></div>
+        <div class="scrollHead">Indian Classics</div>
+        <div class="Main" id="indian-list"><div class="loading">Loading movies...</div></div>
     </div>
 
-    <!-- EXPLORE TAB CONTENT -->
+    <!-- EXPLORE TAB -->
     <div id="explore-tab" class="tab-content">
-        <input type="text" class="searchBar" placeholder="Search millions of movies..." onkeyup="globalSearch(this.value)">
-        <div class="scrollHead"><p id="explore-title">POPULAR GLOBALLY</p></div>
-        <div class="Main grid-layout" id="explore-results">
-            <!-- Results will be loaded here in a grid -->
+        <div class="search-container">
+            <input type="text" class="searchBar" placeholder="Search for movies..." onkeyup="globalSearch(this.value)">
         </div>
+        <div class="scrollHead" id="explore-title">Popular Globally</div>
+        <div class="grid-layout" id="explore-results"></div>
+    </div>
+
+    <div class="Footer">
+        <p>© 2025 FilmPedia. All rights reserved.</p>
+        <p>Created by Mithuneesh. K</p>
     </div>
 
     <script>
@@ -61,7 +233,7 @@
       const BASE_URL = 'https://api.themoviedb.org/3';
       const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
-      const PREFERRED_MOVIES = {
+      const PREFERRED = {
         hollywood: [116745, 1084736, 634649, 315, 11354, 335977],
         animated: [508439, 9502, 1374523, 569094, 324849, 38757],
         indian: [579047, 81839, 870357, 801688, 379291, 1040523]
@@ -72,7 +244,6 @@
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId + '-tab').classList.add('active');
         event.currentTarget.classList.add('active');
-        
         if (tabId === 'explore') fetchExplore('/movie/popular');
       }
 
@@ -80,158 +251,66 @@
         const container = document.getElementById(containerId);
         container.innerHTML = '';
         for (const id of ids) {
-            try {
-                const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-                const movie = await response.json();
-                renderMovieCard(movie, container, false);
-            } catch (e) { console.error(e); }
+          try {
+            const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+            const movie = await response.json();
+            renderCard(movie, container);
+          } catch (e) { console.log(e); }
         }
       }
 
-      async function fetchTrending(containerId) {
-        const container = document.getElementById(containerId);
+      async function fetchTrending() {
+        const container = document.getElementById('trending-list');
         try {
           const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
           const data = await response.json();
           container.innerHTML = '';
-          data.results.slice(0, 6).forEach(movie => renderMovieCard(movie, container, false));
-        } catch (e) { console.error(e); }
+          data.results.slice(0, 6).forEach(m => renderCard(m, container));
+        } catch (e) { console.log(e); }
       }
 
-      async function fetchExplore(endpoint, title = "POPULAR GLOBALLY") {
+      async function fetchExplore(endpoint, title = "Popular Globally") {
         const container = document.getElementById('explore-results');
-        document.getElementById('explore-title').textContent = title;
+        document.getElementById('explore-title').innerText = title;
         try {
           const response = await fetch(`${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`);
           const data = await response.json();
           container.innerHTML = '';
-          data.results.forEach(movie => renderMovieCard(movie, container, true));
-        } catch (e) { console.error(e); }
+          data.results.forEach(m => renderCard(m, container));
+        } catch (e) { console.log(e); }
       }
 
-      let searchTimer;
       function globalSearch(query) {
-        clearTimeout(searchTimer);
-        searchTimer = setTimeout(() => {
-            if (query.length > 2) {
-                fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `RESULTS FOR: ${query.toUpperCase()}`);
-            } else if (query.length === 0) {
-                fetchExplore('/movie/popular');
-            }
-        }, 500);
+        if (query.length > 2) {
+          fetchExplore(`/search/movie?query=${encodeURIComponent(query)}`, `Results for: ${query.toUpperCase()}`);
+        } else if (query.length === 0) {
+          fetchExplore('/movie/popular');
+        }
       }
 
-      function renderMovieCard(movie, container, isGrid) {
+      function renderCard(movie, container) {
+        const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
         container.innerHTML += `
-            <div class="MainMvContainer ${isGrid ? 'grid-card' : ''}">
-                <div class="MovieContainer">
-                    <img class="movieImg" src="${movie.poster_path ? IMG_PATH + movie.poster_path : 'movies/photos/logo.png'}" alt="${movie.title}">
-                    <div class="movieDetails">
-                        <a href="movies/movie-details.html?tmdbId=${movie.id}" class="movieName">${movie.title}</a>
-                        <p class="movieGenre">${movie.release_date ? movie.release_date.split('-')[0] : 'N/A'}</p>
-                        <p class="movieRating">⭐ ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}</p>
-                    </div>
-                </div>
-                <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 100) + '...' : 'No description available.'}</p>
+          <div class="MainMvContainer">
+            <div class="MovieContainer">
+              <img class="movieImg" src="${movie.poster_path ? IMG_PATH + movie.poster_path : 'movies/photos/logo.png'}">
+              <div class="movieDetails">
+                <a href="movies/movie-details.html?tmdbId=${movie.id}" class="movieName">${movie.title}</a>
+                <p class="movieGenre">${year}</p>
+                <p class="movieRating">⭐ ${movie.vote_average.toFixed(1)}</p>
+              </div>
             </div>
+            <p class="movieDesc">${movie.overview ? movie.overview.substring(0, 110) + '...' : 'No description available.'}</p>
+          </div>
         `;
       }
 
       window.onload = () => {
-        fetchTrending('trending-list');
-        fetchMoviesByIds(PREFERRED_MOVIES.hollywood, 'hollywood-list');
-        fetchMoviesByIds(PREFERRED_MOVIES.animated, 'animated-list');
-        fetchMoviesByIds(PREFERRED_MOVIES.indian, 'indian-list');
+        fetchTrending();
+        fetchMoviesByIds(PREFERRED.hollywood, 'hollywood-list');
+        fetchMoviesByIds(PREFERRED.animated, 'animated-list');
+        fetchMoviesByIds(PREFERRED.indian, 'indian-list');
       };
     </script>
-
-    <style>
-      .tabs {
-        display: flex;
-        justify-content: center;
-        background: rgba(0,0,0,0.1);
-        padding: 10px;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-      .tab-btn {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-      .tab-btn.active {
-        background: white;
-        color: dodgerblue;
-      }
-      .tab-content { display: none; }
-      .tab-content.active { display: block; }
-
-      .Main {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 1rem;
-        overflow-x: auto;
-        padding: 15px;
-        scrollbar-width: none;
-      }
-      .Main::-webkit-scrollbar { display: none; }
-
-      /* Grid layout for explore tab */
-      .grid-layout {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-        overflow-x: hidden;
-      }
-
-      .MainMvContainer {
-        flex: 0 0 auto;
-        background-color: rgb(178, 211, 255);
-        border-radius: 10px;
-        width: 320px;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        transition: transform 0.3s ease;
-      }
-      .grid-card { width: 100% !important; }
-
-      .MainMvContainer:hover { transform: translateY(-5px); }
-
-      .MovieContainer {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 0.8rem;
-        background: #ffffff;
-        border-radius: 8px;
-        padding: 0.8rem;
-      }
-
-      .movieImg { width: 100px; height: 140px; object-fit: cover; border-radius: 6px; }
-
-      .movieDetails { display: flex; flex-direction: column; justify-content: flex-start; }
-
-      .movieName { color: dodgerblue !important; font-size: 1.1rem; font-weight: bold; text-decoration: none; line-height: 1.2; margin-bottom: 5px; }
-
-      .movieGenre { font-size: 0.9rem; font-style: italic; color: #0066cc; }
-
-      .movieRating { color: #ffae00; font-weight: bold; margin-top: 10px; }
-
-      .movieDesc { margin: 10px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 14px; font-weight: bold; color: #222; line-height: 1.3; }
-
-      .loading { color: white; padding: 20px; text-align: center; width: 100%; }
-    </style>
-
-
-    <div class="Footer">
-        <p class="FooterText">© 2025 FilmPedia. All rights reserved.</p>
-        <p class="FooterText">Mithuneesh. K</p>
-        <p>@FilmPedia</p>
-    </div>
 </body>
 </html>
