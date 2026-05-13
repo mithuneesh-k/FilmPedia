@@ -1,35 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">FilmPedia - Movie Details</title>
     <link rel="icon" type="image/png" href="photos/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .back-btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background: white; color: #1e90ff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.2s; }
-        .back-btn:hover { background: #f0f0f0; transform: scale(1.05); }
-        .section { background: white; margin: 20px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .section h2 { color: #1e90ff; margin-top: 0; }
-        nav ul { display: flex; justify-content: center; gap: 20px; padding: 15px; background: #0078ee; margin: 0; list-style: none; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; padding: 8px 15px; border-radius: 20px; transition: 0.2s; }
-        nav ul li a:hover { background: rgba(255,255,255,0.2); }
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0d1117; color: #eaeaea; }
+
+        /* ── Shared Header override for dark bg ── */
+        .Header {
+            background: linear-gradient(160deg, #003d99 0%, #005fe8 60%, #1e90ff 100%);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .hero-backdrop {
+            position: absolute; inset: 0;
+            background-size: cover;
+            background-position: center 20%;
+            filter: blur(2px) brightness(0.35);
+            transform: scale(1.05);
+        }
+        .hero-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(13,17,23,0) 0%, rgba(13,17,23,0.6) 60%, #0d1117 100%);
+        }
+        .hero-content {
+            position: relative;
+            display: flex;
+            gap: 32px;
+            align-items: flex-end;
+            padding: 40px 40px 48px;
+            width: 100%;
+        }
+        .hero-poster {
+            flex-shrink: 0;
+            width: 200px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            border: 3px solid rgba(255,255,255,0.12);
+            object-fit: cover;
+        }
+        .hero-meta { flex: 1; }
+        .hero-title {
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .badge {
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(6px);
+        }
+        .badge.rating {
+            background: rgba(255,174,0,0.2);
+            border-color: #ffae00;
+            color: #ffae00;
+            font-size: 14px;
+        }
+        .hero-overview {
+            font-size: 15px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.65;
+            max-width: 680px;
+            margin-bottom: 20px;
+        }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .btn-primary { background: #1e90ff; color: #fff; }
+        .btn-ghost {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(6px);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+        /* ── Sticky nav ── */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(13,17,23,0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 10px 20px;
+        }
+        .nav-pill {
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-pill:hover { background: rgba(30,144,255,0.15); color: #fff; }
+
+        /* ── Content area ── */
+        .page-body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* ── Section card ── */
+        .card {
+            background: #161b22;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 28px 32px;
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ── Details grid ── */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .detail-item {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .detail-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 6px;
+        }
+        .detail-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* ── Cast grid ── */
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 14px;
+        }
+        .cast-card {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .cast-card:hover { border-color: #1e90ff; transform: translateY(-2px); }
+        .cast-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #eaeaea;
+            margin-bottom: 4px;
+        }
+        .cast-role {
+            font-size: 12px;
+            color: rgba(255,255,255,0.45);
+            font-style: italic;
+        }
+
+        /* ── Crew chips ── */
+        .crew-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .crew-chip {
+            background: rgba(30,144,255,0.12);
+            border: 1px solid rgba(30,144,255,0.3);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 13px;
+            color: #1e90ff;
+            font-weight: 700;
+        }
+        .crew-chip span {
+            color: rgba(255,255,255,0.55);
+            font-weight: 400;
+            margin-right: 4px;
+        }
+
+        /* ── Trailer section ── */
+        .trailer-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .trailer-icon {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: #1e90ff;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 8px rgba(30,144,255,0.15);
+        }
+        .trailer-icon .material-icons { color: #fff; font-size: 28px; }
+        .trailer-text h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .trailer-text p { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+        /* ── Footer ── */
+        .Footer { background: #0d1117; border-top: 1px solid rgba(255,255,255,0.06); }
+
+        /* ── Error state ── */
+        .error-state {
+            text-align: center;
+            padding: 80px 24px;
+            color: rgba(255,255,255,0.6);
+        }
+        .error-state h2 { font-size: 28px; color: #fff; margin-bottom: 12px; }
+        .loading { color: rgba(255,255,255,0.6); }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero-content { flex-direction: column; align-items: flex-start; padding: 24px 20px 36px; }
+            .hero-poster { width: 130px; }
+            .page-body { padding: 24px 16px 48px; }
+            .card { padding: 20px; }
+            .cast-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+        }
     </style>
 </head>
-<body> 
+<body>
+
     <div class="Header">
-        <div style="width: 32px;"></div>
+        <a href="../index.html" class="btn-ghost btn" style="padding:8px 18px; font-size:13px;">
+            <span class="material-icons" style="font-size:18px;">arrow_back</span> Back
+        </a>
         <div class="HeaderContent">
-            <h1 class="Title"><a href="../index.html" style="color: inherit; text-decoration: none;">FILMPEDIA</a></h1>
+            <h1 class="Title"><a href="../index.html" style="color:inherit;text-decoration:none;">FILMPEDIA</a></h1>
             <p class="Desc">A Movie Guide</p>
         </div>
-        <div style="width: 32px;"></div>
+        <div style="width:90px;"></div>
     </div>
 
-    <div id="content">
-        <div class="loading">Loading movie details...</div>
+    <!-- Hero Section -->
+    <div class="hero" id="hero">
+        <div class="hero-backdrop" id="heroBg"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content" id="heroContent">
+            <div class="loading">Loading movie details...</div>
+        </div>
     </div>
+
+    <!-- Sticky Nav -->
+    <nav class="sticky-nav" id="stickyNav" style="display:none;">
+        <a class="nav-pill" href="#film-section">🎬 Film</a>
+        <a class="nav-pill" href="#cast-section">🎭 Cast & Crew</a>
+        <a class="nav-pill" href="#details-section">📋 Details</a>
+    </nav>
+
+    <!-- Page Body -->
+    <div class="page-body" id="pageBody"></div>
 
     <div class="Footer">
         <p>© 2025 FilmPedia. Created by Mithuneesh. K</p>
@@ -37,89 +320,129 @@
 
     <script src="../js/api.js"></script>
     <script>
+        const BACKDROP_PATH = 'https://image.tmdb.org/t/p/w1280';
+
         async function loadMovieDetails() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const tmdbId = urlParams.get('tmdbId');
-            const contentDiv = document.getElementById('content');
+            const tmdbId = new URLSearchParams(window.location.search).get('tmdbId');
+            if (!tmdbId) { showError('No movie selected.'); return; }
 
-            if (!tmdbId) {
-                showError("No movie selected.");
-                return;
-            }
-
-            // Fetch movie details + videos + credits in ONE API call
             const data = await fetchMovies(`/movie/${tmdbId}?append_to_response=videos,credits`);
-            if (!data || data.status_code === 34) {
-                showError("Movie not found.");
-                return;
-            }
+            if (!data || data.status_code === 34) { showError('Movie not found.'); return; }
+
+            // Titles & meta
+            document.title = `${data.title} — FilmPedia`;
+
+            // ── Hero ──────────────────────────────────
+            const backdrop = data.backdrop_path ? BACKDROP_PATH + data.backdrop_path : '';
+            const poster   = data.poster_path   ? IMG_PATH + data.poster_path       : 'photos/logo.png';
+
+            if (backdrop) document.getElementById('heroBg').style.backgroundImage = `url('${backdrop}')`;
+
+            const genres  = data.genres?.map(g => `<span class="badge">${g.name}</span>`).join('') || '';
+            const rating  = data.vote_average ? `<span class="badge rating">⭐ ${data.vote_average.toFixed(1)}</span>` : '';
+            const year    = data.release_date ? data.release_date.split('-')[0] : 'N/A';
+            const runtime = data.runtime ? `${Math.floor(data.runtime/60)}h ${data.runtime%60}m` : '';
 
             const trailerKey = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube')?.key;
-            const movie = {
-                title: data.title || 'Unknown Title',
-                image: data.poster_path ? IMG_PATH + data.poster_path : 'photos/logo.png',
-                genre: data.genres?.map(g => g.name).join(' • ') || 'N/A',
-                rating: `⭐ ${data.vote_average ? data.vote_average.toFixed(1) : 'N/A'}`,
-                description: data.overview || 'No description available.',
-                trailerUrl: trailerKey ? `https://www.youtube.com/watch?v=${trailerKey}` : '',
-                cast: data.credits?.cast?.slice(0, 10).map(c => `${c.name} as ${c.character}`) || [],
-                crew: data.credits?.crew?.filter(c => c.job === 'Director' || c.job === 'Producer').slice(0, 3).map(c => `${c.job}: ${c.name}`) || [],
-                watchersGuide: [`Runtime: ${data.runtime ?? 'N/A'} min`, `Status: ${data.status || 'N/A'}`, `Released: ${data.release_date || 'N/A'}`]
-            };
+            const trailerBtn = trailerKey
+                ? `<a href="https://www.youtube.com/watch?v=${trailerKey}" target="_blank" rel="noopener" class="btn btn-primary">
+                       <span class="material-icons" style="font-size:18px;">play_circle</span> Watch Trailer
+                   </a>`
+                : '';
 
-            document.title = movie.title;
-
-            contentDiv.innerHTML = `
-                <div id="moviePoint" class="MainMvContainer" style="margin: 20px; width: auto;">
-                    <div class="MovieContainer">
-                        <img class="movieImg" src="${movie.image}" alt="${movie.title}" style="width: 150px; height: auto;">
-                        <div class="movieDetails">
-                            <span class="movieName" style="font-size: 24px;">${movie.title}</span>
-                            <p class="movieGenre">${movie.genre}</p>
-                            <p class="movieRating">${movie.rating}</p>
-                        </div>
+            document.getElementById('heroContent').innerHTML = `
+                <img class="hero-poster" src="${poster}" alt="${data.title}" loading="eager">
+                <div class="hero-meta">
+                    <h1 class="hero-title">${data.title}</h1>
+                    <div class="badge-row">
+                        ${rating}
+                        <span class="badge">${year}</span>
+                        ${runtime ? `<span class="badge">🕐 ${runtime}</span>` : ''}
+                        ${genres}
                     </div>
-                    <p class="movieDesc" style="margin-top: 20px;">${movie.description}</p>
+                    <p class="hero-overview">${data.overview || 'No description available.'}</p>
+                    <div class="hero-actions">
+                        ${trailerBtn}
+                        <a href="#cast-section" class="btn btn-ghost">
+                            <span class="material-icons" style="font-size:18px;">groups</span> Cast & Crew
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            // Show nav
+            document.getElementById('stickyNav').style.display = 'flex';
+
+            // ── Page body sections ────────────────────
+            const cast = data.credits?.cast?.slice(0, 12) || [];
+            const castCards = cast.map(c => `
+                <div class="cast-card">
+                    <div class="cast-name">${c.name}</div>
+                    <div class="cast-role">${c.character || '—'}</div>
+                </div>
+            `).join('');
+
+            const crew = data.credits?.crew?.filter(c => c.job === 'Director' || c.job === 'Producer' || c.job === 'Screenplay').slice(0, 5) || [];
+            const crewChips = crew.map(c => `
+                <div class="crew-chip"><span>${c.job}</span>${c.name}</div>
+            `).join('');
+
+            const detailItems = [
+                { label: 'Status',       value: data.status || 'N/A' },
+                { label: 'Release Date', value: data.release_date || 'N/A' },
+                { label: 'Runtime',      value: runtime || 'N/A' },
+                { label: 'Language',     value: data.original_language?.toUpperCase() || 'N/A' },
+                { label: 'Budget',       value: data.budget ? `$${(data.budget/1e6).toFixed(1)}M` : 'N/A' },
+                { label: 'Revenue',      value: data.revenue ? `$${(data.revenue/1e6).toFixed(1)}M` : 'N/A' },
+            ];
+            const detailGrid = detailItems.map(d => `
+                <div class="detail-item">
+                    <div class="detail-label">${d.label}</div>
+                    <div class="detail-value">${d.value}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('pageBody').innerHTML = `
+                <!-- Trailer -->
+                ${trailerKey ? `
+                <div class="card" id="film-section">
+                    <div class="card-title">Trailer</div>
+                    <div class="trailer-box">
+                        <div class="trailer-icon">
+                            <span class="material-icons">play_arrow</span>
+                        </div>
+                        <div class="trailer-text">
+                            <h3>${data.title} — Official Trailer</h3>
+                            <p>Opens on YouTube</p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=${trailerKey}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-left:auto;">
+                            Watch Now
+                        </a>
+                    </div>
+                </div>` : ''}
+
+                <!-- Cast & Crew -->
+                <div class="card" id="cast-section">
+                    <div class="card-title">Cast</div>
+                    <div class="cast-grid">${castCards || '<p style="color:rgba(255,255,255,0.4)">No cast info.</p>'}</div>
+                    ${crewChips ? `<div class="card-title" style="margin-top:24px;">Crew</div><div class="crew-list">${crewChips}</div>` : ''}
                 </div>
 
-                <nav>
-                    <ul>
-                        <li><a href="#moviePoint">Film</a></li>
-                        <li><a href="#castCrew">Cast & Crew</a></li>
-                        <li><a href="#watchersGuide">Details</a></li>
-                    </ul>
-                </nav>
-
-                <div class="section">
-                    <h2>Trailer</h2>
-                    ${movie.trailerUrl ? `<a href="${movie.trailerUrl}" target="_blank" class="back-btn" style="background: #1e90ff; color: white;">Watch Trailer</a>` : `<p>No trailer available.</p>`}
-                </div>
-
-                <div id="castCrew" class="section">
-                    <h2>Cast & Crew</h2>
-                    <ul style="list-style: none; padding: 0;">
-                        ${movie.cast.map(c => `<li style="margin-bottom: 8px;"><strong>${c.split(' as ')[0]}</strong> ${c.includes(' as ') ? 'as ' + c.split(' as ')[1] : ''}</li>`).join('')}
-                        ${movie.crew.map(c => `<li style="margin-bottom: 8px; font-style: italic;">${c}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div id="watchersGuide" class="section">
-                    <h2>Watcher's Guide</h2>
-                    <ul style="list-style: none; padding: 0;">
-                        ${movie.watchersGuide.map(w => `<li style="margin-bottom: 8px;">${w}</li>`).join('')}
-                    </ul>
+                <!-- Details -->
+                <div class="card" id="details-section">
+                    <div class="card-title">Details</div>
+                    <div class="details-grid">${detailGrid}</div>
                 </div>
             `;
         }
 
-        function showError(message) {
-            document.getElementById('content').innerHTML = `
-                <div style="text-align: center; padding: 50px; color: white;">
+        function showError(msg) {
+            document.getElementById('heroContent').innerHTML = `
+                <div class="error-state" style="width:100%;">
                     <h2>Oops!</h2>
-                    <p>${message}</p>
-                    <a href="../index.html" class="back-btn">Back to Home</a>
-                </div>
-            `;
+                    <p>${msg}</p>
+                    <a href="../index.html" class="btn btn-primary" style="margin-top:20px;display:inline-flex;">← Back to Home</a>
+                </div>`;
         }
 
         window.onload = loadMovieDetails;
