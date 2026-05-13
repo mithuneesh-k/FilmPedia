@@ -82,15 +82,13 @@
       async function fetchTrending() {
         const data = await fetchMovies('/trending/movie/week');
         const container = document.getElementById('trending-list');
-        if (data) data.results.slice(0, 6).forEach(m => renderMovieCard(m, container));
+        if (data) renderMovieBatch(data.results.slice(0, 6), container);
       }
 
       async function fetchCurated(ids, containerId) {
         const container = document.getElementById(containerId);
-        for (const id of ids) {
-          const movie = await fetchMovieById(id);
-          if (movie) renderMovieCard(movie, container);
-        }
+        const movies = await fetchMoviesByIds(ids);
+        renderMovieBatch(movies.filter(Boolean), container);
       }
 
       async function fetchExplore(endpoint, title = "Popular Globally") {
@@ -99,10 +97,9 @@
         container.innerHTML = '<p style="color:white;padding:20px;">Loading...</p>';
         const data = await fetchMovies(endpoint);
         if (data && data.results) {
-          // Client-side safety: skip any adult-flagged results
           const safe = data.results.filter(m => !m.adult);
           container.innerHTML = '';
-          safe.forEach(m => renderMovieCard(m, container));
+          renderMovieBatch(safe, container);
         }
       }
 

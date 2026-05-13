@@ -47,22 +47,24 @@
                 return;
             }
 
-            const data = await fetchMovieById(tmdbId);
+            // Fetch movie details + videos + credits in ONE API call
+            const data = await fetchMovies(`/movie/${tmdbId}?append_to_response=videos,credits`);
             if (!data || data.status_code === 34) {
                 showError("Movie not found.");
                 return;
             }
 
+            const trailerKey = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube')?.key;
             const movie = {
-                title: data.title,
+                title: data.title || 'Unknown Title',
                 image: data.poster_path ? IMG_PATH + data.poster_path : 'photos/logo.png',
-                genre: data.genres.map(g => g.name).join(' • '),
-                rating: `⭐ ${data.vote_average.toFixed(1)}`,
-                description: data.overview,
-                trailerUrl: data.videos.results.find(v => v.type === 'Trailer')?.key ? `https://www.youtube.com/watch?v=${data.videos.results.find(v => v.type === 'Trailer').key}` : '',
-                cast: data.credits.cast.slice(0, 10).map(c => `${c.name} as ${c.character}`),
-                crew: data.credits.crew.filter(c => c.job === 'Director' || c.job === 'Producer').slice(0, 3).map(c => `${c.job}: ${c.name}`),
-                watchersGuide: [`Runtime: ${data.runtime} min`, `Status: ${data.status}`, `Released: ${data.release_date}`]
+                genre: data.genres?.map(g => g.name).join(' • ') || 'N/A',
+                rating: `⭐ ${data.vote_average ? data.vote_average.toFixed(1) : 'N/A'}`,
+                description: data.overview || 'No description available.',
+                trailerUrl: trailerKey ? `https://www.youtube.com/watch?v=${trailerKey}` : '',
+                cast: data.credits?.cast?.slice(0, 10).map(c => `${c.name} as ${c.character}`) || [],
+                crew: data.credits?.crew?.filter(c => c.job === 'Director' || c.job === 'Producer').slice(0, 3).map(c => `${c.job}: ${c.name}`) || [],
+                watchersGuide: [`Runtime: ${data.runtime ?? 'N/A'} min`, `Status: ${data.status || 'N/A'}`, `Released: ${data.release_date || 'N/A'}`]
             };
 
             document.title = movie.title;
